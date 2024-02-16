@@ -1,0 +1,73 @@
+.Header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 120px;
+  margin: 15px 20px;
+  background-color: #fefae1;
+  border-radius: 30px;
+  position: relative;
+  top: 10px;
+}
+
+html {
+  background-color: #faef9b;
+  width: 100%;
+  height: 100%;
+}
+
+.FirstPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 35px 20px;
+  background-color: #fefae1;
+  border-radius: 30px;
+  height: 500px;
+}
+
+.BeeHouse {
+  width: 250px;
+  height: 100px;
+  margin: auto;
+  display: block;
+}
+
+.LoginPagelink,
+.RegisterPagelink,
+.NonMemberPagelink {
+  width: 350px;
+  flex-basis: 10%;
+  border-radius: 50px;
+  background-color: #98bebb;
+}
+
+.High {
+  flex-basis: 10%;
+  padding: 0;
+  margin: 0;
+}
+
+.WelcomeFont {
+  margin: 20px;
+  padding-top: 20px;
+  font-size: 85px;
+  color: #98bebb;
+}
+
+.low {
+  flex-basis: 10%;
+}
+
+.FirstPageFont {
+  text-align: center;
+  line-height: 35px;
+  color: black;
+}
+
+.LogoBoxSize {
+  width: 250px;
+  height: 100px;
+  margin: 0 auto;
+}

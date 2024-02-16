@@ -1,0 +1,150 @@
+.registerbox {
+  margin: 35px 20px;
+  background-color: #98bebb;
+  border-radius: 30px;
+  height: 500px;
+}
+
+.inputcreateacount {
+  display: grid;
+  grid-template-rows: 8% 5% 13% 13% 13% 13% 13% 13% 10%;
+  grid-template-columns: 33% 34% 33%;
+  row-gap: 10%;
+  grid-template-areas:
+    '. cas .'
+    '. . .'
+    '. IN .'
+    '. II .'
+    '. IP .'
+    '. ICP .'
+    '. IE .'
+    '. CL .';
+}
+
+.closediv {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: '.     .';
+  width: 10%;
+  height: 90%;
+}
+
+.closebtn {
+  float: right;
+  height: 45px;
+  width: 45px;
+}
+
+.createaccountstring {
+  grid-area: cas;
+  flex-basis: 5%;
+  text-align: center;
+  font-size: 40px;
+}
+
+.inputnamediv {
+  grid-area: IN;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: 'L R';
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 2px 2px 2px 2px grey;
+  line-height: 31px;
+  text-align: center;
+  background-color: #e0ebeb;
+}
+
+.inputname,
+.inputid,
+.inputpassword,
+.inputconfirmpassword,
+.inputemail {
+  background-color: #e0ebeb;
+  width: 80%;
+  height: 65%;
+  grid-area: R;
+  justify-self: start;
+  line-height: 31px;
+  right: 10%;
+  border-width: 0;
+  outline: none;
+  color: black;
+}
+
+.inputiddiv {
+  grid-area: II;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: 'L R';
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 2px 2px 2px 2px grey;
+  line-height: 31px;
+  text-align: center;
+  background-color: #e0ebeb;
+}
+
+.inputpassworddiv {
+  grid-area: IP;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: 'L R';
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 2px 2px 2px 2px grey;
+  line-height: 31px;
+  text-align: center;
+  background-color: #e0ebeb;
+}
+
+.inputconfirmpassworddiv {
+  grid-area: ICP;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: 'L R';
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 2px 2px 2px 2px grey;
+  line-height: 31px;
+  text-align: center;
+  background-color: #e0ebeb;
+}
+
+.inputemaildiv {
+  grid-area: IE;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: 'L R';
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 2px 2px 2px 2px grey;
+  line-height: 31px;
+  text-align: center;
+  background-color: #e0ebeb;
+}
+
+.inputcomplete {
+  grid-area: CL;
+  justify-self: start;
+  border-radius: 20px;
+  background-color: #e0ebeb;
+  box-shadow: 2px 2px 2px 2px grey;
+  line-height: 31px;
+  text-align: center;
+  height: 100%;
+  width: 30%;
+}
+
+.gologin {
+  grid-area: CL;
+  justify-self: end;
+  border-radius: 20px;
+  background-color: #e0ebeb;
+  box-shadow: 2px 2px 2px 2px grey;
+  line-height: 31px;
+  text-align: center;
+  height: 100%;
+  width: 30%;
+  color: black;
+}
