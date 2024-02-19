@@ -4,7 +4,17 @@ export default function HomeButton(props) {
   return (
     <>
       <Link className="link" to={props.link}>
-        <div className="button">{props.text}</div>
+        <div
+          style={{
+            width: props.width,
+            height: props.height,
+            color: props.color,
+            margin: props.margin,
+          }}
+          className="button"
+        >
+          {props.text}
+        </div>
       </Link>
     </>
   );

@@ -29,7 +29,7 @@
   align-items: center;
 }
 
-.homePage {
+.HomeSection {
   width: 85%;
   height: 85%;
   border-radius: 30px;
@@ -40,10 +40,31 @@
   align-items: center;
 }
 
+.inputSection {
+  width: 35%;
+  height: 8%;
+  margin-top: 2vh;
+  border-radius: 30px;
+  background-color: #fdfae1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+.HeaderSection {
+  width: 85%;
+  height: 20%;
+  border-radius: 30px;
+  background-color: #fdfae1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .button {
   margin-top: 7%;
-  width: 20vw;
-  height: 7vh;
   border: solid 1px #e4e1cb;
   border-radius: 30px;
   background-color: #fff;
