@@ -6,6 +6,7 @@ export default function NoRangLogo(props) {
       <img
         style={{
           width: props.width,
+          margin: 12,
         }}
         src={logo}
         alt="노랑"

@@ -91,3 +91,13 @@
   height: 85%;
   background-color: #b5d3a7;
 }
+
+/* Main CSS */
+
+.logoSection {
+  display: flex;
+  justify-content: center;
+  width: 40vw;
+  height: 30vh;
+  background-color: #fdfae1;
+}
