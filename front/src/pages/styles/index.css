@@ -113,11 +113,12 @@
   background-color: #fdfae1;
 }
 
-.postSection {
+.rightSection {
   width: 70vw;
   height: 89vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-left: 2vw;
   border-radius: 30px;
   background-color: #fdfae1;
@@ -152,4 +153,31 @@
   background-color: #b5d3a7;
   border-radius: 30px;
   border: solid 0.7px #e5e4de;
+}
+
+/* 글쓰기 컴포넌트 */
+
+.greenBox {
+  width: 66vw;
+  height: 81vh;
+  background-color: #b5d3a7;
+  border-radius: 30px;
+}
+
+.postInfo {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-family: 'Cafe24SsurroundAir';
+  margin: 10px 5px;
+}
+
+.postHeader {
+  width: 63vw;
+  height: 15vh;
+  background-color: #e1eddc;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
