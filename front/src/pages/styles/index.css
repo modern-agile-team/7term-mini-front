@@ -1,2 +1,79 @@
-#test {
+@font-face {
+  font-family: 'Cafe24Ssurround';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cafe24SsurroundAir';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  font-family: 'Cafe24Ssurround';
+  color: #606060;
+}
+
+.body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #faef9b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HomeSection {
+  width: 85%;
+  height: 85%;
+  border-radius: 30px;
+  background-color: #fdfae1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputSection {
+  width: 35%;
+  height: 8%;
+  margin-top: 2vh;
+  border-radius: 30px;
+  background-color: #fdfae1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+.HeaderSection {
+  width: 85%;
+  height: 20%;
+  border-radius: 30px;
+  background-color: #fdfae1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  margin-top: 7%;
+  border: solid 1px #e4e1cb;
+  border-radius: 30px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+.link {
+  text-decoration-line: none;
 }
