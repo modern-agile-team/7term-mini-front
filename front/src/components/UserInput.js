@@ -16,7 +16,7 @@ export default function UserInput(props) {
         </span>
         <input
           type="text"
-          className={props.key}
+          id={props.key}
           style={{
             width: '60%',
             height: '70%',
