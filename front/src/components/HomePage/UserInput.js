@@ -15,7 +15,8 @@ export default function UserInput(props) {
           {props.text}
         </span>
         <input
-          type="text"
+          name="kkk"
+          type={props.type}
           id={props.key}
           style={{
             width: '60%',
@@ -25,6 +26,7 @@ export default function UserInput(props) {
             marginLeft: '10px',
             outline: 'none',
           }}
+          onChange={props.UserInput}
         ></input>
       </div>
     </>
