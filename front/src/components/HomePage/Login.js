@@ -1,9 +1,12 @@
+import {useState} from "react"
 import Header from './Header';
 import HomeButton from './HomeButton';
 import LoginBody from './LoginBody';
 import UserInput from './UserInput';
 
 export default function Login() {
+  const [loginId, setLoginn] = useState();
+
   return (
     <>
       <div
