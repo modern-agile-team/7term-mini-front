@@ -1,4 +1,4 @@
-import logo from '../assets/norang-logo.png';
+import logo from '../../assets/norang-logo.png';
 
 export default function NoRangLogo(props) {
   return (
@@ -6,6 +6,7 @@ export default function NoRangLogo(props) {
       <img
         style={{
           width: props.width,
+          margin: 12,
         }}
         src={logo}
         alt="노랑"

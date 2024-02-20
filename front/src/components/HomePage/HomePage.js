@@ -1,5 +1,5 @@
 import HomeButton from './HomeButton';
-import NoRangLogo from './NoRangLogo';
+import NoRangLogo from '../entrie/NoRangLogo';
 
 export default function HomePage() {
   return (
