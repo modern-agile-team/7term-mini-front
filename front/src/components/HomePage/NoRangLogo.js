@@ -1,4 +1,4 @@
-import logo from '../assets/norang-logo.png';
+import logo from '../../assets/norang-logo.png';
 
 export default function NoRangLogo(props) {
   return (
