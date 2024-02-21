@@ -5,6 +5,7 @@ import BeeLogo from '../entrie/BeeLogo';
 import Category from './Category';
 import Pencil from '../entrie/Pencil';
 import {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 export default function WritePage() {
   const nowTime = moment().format('YYYY-MM-DD HH:mm');
@@ -18,7 +19,9 @@ export default function WritePage() {
       <div className="greenBox">
         <div className="postInfo">
           {nowTime}
-          <Remove width="2vw" margin="0px 10px" />
+          <Link to="/">
+            <Remove width="2vw" margin="0px 10px" />
+          </Link>
         </div>
         <div
           style={{
