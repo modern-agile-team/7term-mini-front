@@ -4,13 +4,14 @@ import * as React from 'react';
 import NoRangLogo from '../entrie/NoRangLogo';
 import Board from './Board';
 import {Link} from 'react-router-dom';
-import PostList from './PostList';
+import WritePage from './WritePage';
+//import PostView from './PostView';
 
 //<Stack spacing={4}>
 //              <Pagination count={10} showFirstButton showLastButton />
 //           </Stack>
 
-export default function Main() {
+export default function NewPost() {
   return (
     <>
       <div className="body">
@@ -24,7 +25,7 @@ export default function Main() {
         </section>
         <section>
           <div className="rightSection">
-            <PostList />
+            <WritePage />
           </div>
         </section>
       </div>
