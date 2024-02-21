@@ -181,3 +181,60 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.categorySelect {
+  width: 55vw;
+  height: 12vh;
+  background-color: #f3f8f1;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.radios {
+  flex-direction: row;
+  margin-top: 10px;
+}
+label {
+  font-family: 'Cafe24SsurroundAir';
+  margin: 5px;
+}
+
+.postBody {
+  width: 63vw;
+  height: 51vh;
+  margin-top: 1.5vw;
+  background-color: #e1eddc;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.writeField {
+  width: 48vw;
+  height: 35vh;
+  background-color: #f3f8f1;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  font-family: 'Cafe24SsurroundAir';
+  padding: 30px;
+  resize: none;
+  outline: none;
+}
+
+.postButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.textLength {
+  margin-top: 29vh;
+  font-family: 'Cafe24SsurroundAir';
+}
