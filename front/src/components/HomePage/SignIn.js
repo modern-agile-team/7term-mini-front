@@ -22,7 +22,7 @@ export default function SignIn() {
         .then(result => {
           if (result.message === '회원가입에 성공하였습니다.') {
             if (confirmnavigate()) {
-              navigate(`https://localhost:3000/login`);
+              navigate(`/login`);
             }
           }
         })
