@@ -7,7 +7,7 @@ import Pencil from '../entrie/Pencil';
 import {useState} from 'react';
 
 export default function WritePage() {
-  const nowTime = moment().format('YYYY-MM-DD HH:mm:ss');
+  const nowTime = moment().format('YYYY-MM-DD HH:mm');
   const [text, setText] = useState('');
 
   function onChange(event) {
@@ -34,7 +34,13 @@ export default function WritePage() {
               <Category />
             </form>
           </div>
-
+          <hr
+            style={{
+              marginTop: '1.5vh',
+              border: '1.5px dashed #4C5F5D',
+              width: '63vw',
+            }}
+          ></hr>
           <div className="postBody">
             <textarea
               type="text"

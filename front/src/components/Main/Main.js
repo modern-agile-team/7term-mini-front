@@ -4,8 +4,8 @@ import * as React from 'react';
 import NoRangLogo from '../entrie/NoRangLogo';
 import Board from './Board';
 import {Link} from 'react-router-dom';
-//import PostView from './PostView';
 import WritePage from './WritePage';
+//import PostView from './PostView';
 
 //<Stack spacing={4}>
 //              <Pagination count={10} showFirstButton showLastButton />
