@@ -12,6 +12,7 @@ export default function HomeButton(props) {
             margin: props.margin,
           }}
           className="button"
+          onClick={props.onClick}
         >
           {props.text}
         </div>
