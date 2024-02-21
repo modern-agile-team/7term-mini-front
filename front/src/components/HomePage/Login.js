@@ -71,7 +71,7 @@ export default function Login() {
           }}
         >
           <HomeButton
-            link="/NORANG"
+            link=""
             text="입력 완료"
             width="13vw"
             height="7vh"

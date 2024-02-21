@@ -60,8 +60,6 @@ export default function SignIn() {
     return window.confirm('회원가입이 완료되었어요 로그인 창으로 이동할까요?');
   }
 
-  console.log(validNick);
-
   return (
     <>
       <div
