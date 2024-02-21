@@ -3,36 +3,35 @@ import Header from './Header';
 import HomeButton from './HomeButton';
 import LoginBody from './LoginBody';
 import UserInput from './UserInput';
-import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export default function Login() {
   const [getauthId, setId] = useState('');
   const [getauthPw, setPw] = useState('');
-  const navigate = useNavigate();
 
   function login() {
-    if (getauthId.length > 8 && getauthPw.length > 8) {
-      fetch('15.164.231.77:3000/auth/login', {
-        method: 'GET',
-        headers: [['content-type', 'application/json']],
+    if (getauthId.length < 16 && getauthPw.length < 16) {
+      fetch('http://15.164.231.77:3000/auth/login', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
         body: JSON.stringify({
-          ID: getauthId,
-          PW: getauthPw,
+          id: getauthId,
+          password: getauthPw,
         }),
       })
         .then(response => response.json())
         .then(result => {
-          if (result.data.acessToken) {
-            localStorage.setItem('accesstoken', result.data.acessToken);
-            localStorage.setItem('refreshtoken', result.data.refreshToken);
-            navigate(`http://localhost:3000/NORANG`);
+          if (result.accessToken) {
+            localStorage.setItem('accessToken', result.accessToken);
+            localStorage.setItem('refreshToken', result.refreshToken);
           }
         })
-        .catch(() => {
-          console.log('에러');
+        .catch(err => {
+          console.log(err);
+          alert('ㅇㄹ');
         });
     } else {
-      alert('끄지세요');
+      alert('login failed');
     }
   }
 
@@ -44,7 +43,9 @@ export default function Login() {
     setPw(e.target.value);
   };
 
-  console.log(getauthId, getauthPw);
+  // console.log(getauthId);
+  // console.log(getauthPw);
+
   return (
     <>
       <div
@@ -70,7 +71,7 @@ export default function Login() {
           }}
         >
           <HomeButton
-            link=""
+            link="/NORANG"
             text="입력 완료"
             width="13vw"
             height="7vh"

@@ -15,7 +15,7 @@ export default function UserInput(props) {
           {props.text}
         </span>
         <input
-          name="kkk"
+          name={props.name}
           type={props.type}
           id={props.key}
           style={{
