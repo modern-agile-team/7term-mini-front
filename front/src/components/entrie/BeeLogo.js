@@ -1,6 +1,6 @@
-import logo from '../../assets/norang-logo.png';
+import logo from '../../assets/bee.png';
 
-export default function NoRangLogo(props) {
+export default function BeeLogo(props) {
   return (
     <>
       <img
@@ -9,7 +9,7 @@ export default function NoRangLogo(props) {
           margin: props.margin,
         }}
         src={logo}
-        alt="노랑"
+        alt="BEE"
       />
     </>
   );
