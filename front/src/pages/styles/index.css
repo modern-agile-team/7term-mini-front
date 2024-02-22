@@ -122,6 +122,7 @@
   margin-left: 2vw;
   border-radius: 30px;
   background-color: #fdfae1;
+  flex-direction: column;
 }
 
 .logoSection {
@@ -237,4 +238,20 @@ label {
 .textLength {
   margin-top: 29vh;
   font-family: 'Cafe24SsurroundAir';
+}
+
+/* Main Post 불러오는 페이지 CSS */
+
+.post {
+  width: 67vw;
+  height: 24vh;
+  background-color: #b5d3a7;
+  border-radius: 30px;
+  margin: 1.5vh 0vh;
+}
+
+.postContent {
+  font-family: 'Cafe24SsurroundAir';
+  padding: 0vw 2.5vw 2.5vw 2.5vw;
+  font-size: 85%;
 }

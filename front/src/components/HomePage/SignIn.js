@@ -43,9 +43,9 @@ export default function SignIn() {
   });
 
   const NICKNAME_REGEX = /^[a-zA-Zㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{1,5}$/;
-  const ID_REGEX = /^[a-zA-Z0-9]{6,15}$/;
-  const PW_REGEX = /^[a-zA-Z0-9]{6,20}$/;
-  const EMAIL_REGEX = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{8,30}$/;
+  const ID_REGEX = /^[a-zA-Z0-9]{3,15}$/;
+  const PW_REGEX = /^[a-zA-Z0-9]{3,20}$/;
+  const EMAIL_REGEX = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]{3,4}$/;
 
   const [validNick, setValidNick] = useState(false);
   const [validId, setValidId] = useState(false);
@@ -70,7 +70,7 @@ export default function SignIn() {
   useEffect(() => {
     const result = EMAIL_REGEX.test(auth.email);
     setValidEmail(result);
-  }, [auth.nickname]);
+  }, [auth.email]);
 
   const onChange = e => {
     setAuth({

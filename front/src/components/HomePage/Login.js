@@ -1,9 +1,8 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import Header from './Header';
 import HomeButton from './HomeButton';
 import LoginBody from './LoginBody';
 import UserInput from './UserInput';
-import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 
 export default function Login() {

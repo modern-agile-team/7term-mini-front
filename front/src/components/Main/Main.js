@@ -1,14 +1,9 @@
 import * as React from 'react';
-// Pagination from '@mui/material/Pagination';
-//import Stack from '@mui/material/Stack';
+
 import NoRangLogo from '../entrie/NoRangLogo';
 import Board from './Board';
 import {Link} from 'react-router-dom';
 import PostList from './PostList';
-
-//<Stack spacing={4}>
-//              <Pagination count={10} showFirstButton showLastButton />
-//           </Stack>
 
 export default function Main() {
   return (
