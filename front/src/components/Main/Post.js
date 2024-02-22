@@ -33,8 +33,8 @@ postContent"
               marginBottom: '50px',
             }}
           >
-            <Greaiting width="1.5vw" margin="0 0.5vw" /> <span>1</span>
-            <UserComment width="1.5vw" margin="0 0.5vw" /> <span>2</span>
+            <Greaiting width="1.5vw" margin="0 0.5vw" />
+            <UserComment width="1.5vw" margin="0 0.5vw" />
           </footer>
         </div>
       </Link>

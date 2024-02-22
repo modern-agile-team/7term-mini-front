@@ -10,7 +10,6 @@ import NewPost from './NewPost';
 export default function Main(props) {
   return (
     <>
-      {console.log(props)}
       <div className="body">
         <section className="leftSection">
           <Link to="/NORANG" className="leftLogoSection">
