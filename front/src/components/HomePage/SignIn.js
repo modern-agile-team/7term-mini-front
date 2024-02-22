@@ -101,32 +101,26 @@ export default function SignIn() {
         >
           회원가입
         </h1>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <UserInput
-            text="닉네임"
-            key="signName"
-            name="nickname"
-            UserInput={onChange}
-          ></UserInput>
-          {!validNick ? (
-            <p
-              style={{
-                color: 'red',
-                lineHeight: 2.5,
-              }}
-            >
-              올바르지 않은 형식입니다.
-            </p>
-          ) : (
-            <p>사용 가능한 닉네임입니다.</p>
-          )}
-        </div>
+
+        <UserInput
+          text="닉네임"
+          key="signName"
+          name="nickname"
+          UserInput={onChange}
+        ></UserInput>
+        {!validNick ? (
+          <p
+            style={{
+              color: 'red',
+              lineHeight: 2.5,
+            }}
+          >
+            올바르지 않은 형식입니다.
+          </p>
+        ) : (
+          <p>사용 가능한 닉네임입니다.</p>
+        )}
+
         <UserInput text="아이디" key="signId" name="id" UserInput={onChange} />
         {!validId ? (
           <p style={{color: 'red', lineHeight: 2.5}}>
