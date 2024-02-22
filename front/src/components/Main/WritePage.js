@@ -48,14 +48,14 @@ export default function WritePage() {
             <textarea
               type="text"
               className="writeField"
-              placeholder="200자 이내로 입력하시오."
-              maxlength="200"
+              placeholder="250자 이내로 입력하시오."
+              maxlength="250"
               onChange={onChange}
             ></textarea>
             <div className="postButton">
               <Pencil width="3.5vw" margin="0px 0px 10px 0px" />
               글쓰기
-              <div className="textLength">{`${text.length} / 200`}</div>
+              <div className="textLength">{`${text.length} / 250`}</div>
             </div>
           </div>
         </div>
