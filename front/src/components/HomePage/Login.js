@@ -4,10 +4,12 @@ import HomeButton from './HomeButton';
 import LoginBody from './LoginBody';
 import UserInput from './UserInput';
 import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 export default function Login() {
   const [getauthId, setId] = useState('');
   const [getauthPw, setPw] = useState('');
+  const navigate = useNavigate();
 
   function login() {
     if (getauthId.length < 16 && getauthPw.length < 16) {
@@ -24,6 +26,7 @@ export default function Login() {
           if (result.accessToken) {
             localStorage.setItem('accessToken', result.accessToken);
             localStorage.setItem('refreshToken', result.refreshToken);
+            navigate('/NORANG');
           }
         })
         .catch(err => {
@@ -71,7 +74,7 @@ export default function Login() {
           }}
         >
           <HomeButton
-            link="/NORANG"
+            link=""
             text="입력 완료"
             width="13vw"
             height="7vh"
