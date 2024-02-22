@@ -4,13 +4,16 @@ import NoRangLogo from '../entrie/NoRangLogo';
 import Board from './Board';
 import {Link} from 'react-router-dom';
 import PostList from './PostList';
+import PostView from './PostView';
+import NewPost from './NewPost';
 
-export default function Main() {
+export default function Main(props) {
   return (
     <>
+      {console.log(props)}
       <div className="body">
         <section className="leftSection">
-          <Link to="/" className="leftLogoSection">
+          <Link to="/NORANG" className="leftLogoSection">
             <NoRangLogo width="15vw" margin="6px 5px" />
           </Link>
           <div className="leftBoardSection">
@@ -19,7 +22,13 @@ export default function Main() {
         </section>
         <section>
           <div className="rightSection">
-            <PostList />
+            {props.page === 'detailPost' ? (
+              <PostView />
+            ) : props.page === 'newPost' ? (
+              <NewPost />
+            ) : (
+              <PostList />
+            )}
           </div>
         </section>
       </div>

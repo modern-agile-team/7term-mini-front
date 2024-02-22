@@ -9,7 +9,7 @@ export default function PostView() {
       <div className="greenBox">
         <div className="postViewHeader">
           <span># 페이지번호 :: {nowTime}</span>
-          <Link to="/">
+          <Link to="/NORANG">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>
