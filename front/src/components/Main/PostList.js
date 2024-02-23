@@ -1,5 +1,17 @@
-import {Link} from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
+import Post from './Post';
 
 export default function PostList() {
-  return <Link to="/view-post">게시글보기</Link>;
+  return (
+    <>
+      <Post />
+      <Post />
+      <Post />
+      <Stack spacing={4}>
+        <Pagination count={10} showFirstButton showLastButton />
+      </Stack>
+    </>
+  );
 }
