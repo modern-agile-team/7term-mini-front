@@ -8,7 +8,7 @@ export default function SignIn() {
   const navigate = useNavigate();
   function sign_in() {
     if (validNick && validId && validPw && validEmail) {
-      fetch('http://15.164.231.77:3000/auth/signup', {
+      fetch('http://15.164.231.77:3000/users/sign-up', {
         method: 'POST',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify({
@@ -51,6 +51,8 @@ export default function SignIn() {
   const [validId, setValidId] = useState(false);
   const [validPw, setValidPw] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
+
+  console.log(validEmail);
 
   useEffect(() => {
     const result = NICKNAME_REGEX.test(auth.nickname);

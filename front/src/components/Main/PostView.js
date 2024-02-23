@@ -8,15 +8,38 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Pencil from '../entrie/Pencil';
 import Comments from './Comments';
+import {useEffect} from 'react';
 
 export default function PostView() {
+  function view_post() {
+    fetch('http://15.164.231.77:3000/boards/7', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+      // body: JSON.stringify({}),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        alert('에러');
+      });
+  }
+
+  useEffect(() => {
+    view_post();
+  }, []);
+
   const nowTime = moment().format('YYYY-MM-DD HH:mm');
   return (
     <>
       <div className="greenBox1">
         <div className="postViewHeader">
-          # 페이지번호 :: {nowTime}
-          <Link to="/NORANG">
+          <span># 페이지번호 :: {nowTime}</span>
+          <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>
