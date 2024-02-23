@@ -23,26 +23,28 @@ export default function PostView() {
     })
       .then(response => response.json())
       .then(result => {
-        setCategories(result);
+        setCategories(result.board);
       })
       .catch(err => {
         alert('에러');
       });
   }, []);
 
-  console.log(categories.board.no);
+  console.log(categories.no);
 
   const nowTime = moment().format('YYYY-MM-DD HH:mm');
   return (
     <>
       <div className="greenBox1">
         <div className="postViewHeader">
-          <span></span>
+          <span>
+            {categories.no}번째 게시물 {categories.created_at}
+          </span>
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>
-        <div className="postViewBody">{categories.board.content}</div>
+        <div className="postViewBody">{categories.content}</div>
         <div className="postViewFooter">
           <span>· 수정하기</span>
           <div className="community">
@@ -88,8 +90,6 @@ export default function PostView() {
             <Pagination count={3} showFirstButton showLastButton />
           </Stack>
         </div>
-        <div className="postViewBody">본문</div>
-        <div className="postViewfooter">수정하기</div>
       </div>
     </>
   );
