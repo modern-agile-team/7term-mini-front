@@ -42,32 +42,31 @@ export default function SignIn() {
     email: '',
   });
 
-  const NICKNAME_REGEX = /^[a-zA-Zㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{1,5}$/;
-  const ID_REGEX = /^[a-zA-Z0-9]{3,15}$/;
-  const PW_REGEX = /^[a-zA-Z0-9]{3,20}$/;
-  const EMAIL_REGEX = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]{3,4}$/;
-
   const [validNick, setValidNick] = useState(false);
   const [validId, setValidId] = useState(false);
   const [validPw, setValidPw] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
 
   useEffect(() => {
+    const NICKNAME_REGEX = /^[a-zA-Zㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{1,5}$/;
     const result = NICKNAME_REGEX.test(auth.nickname);
     setValidNick(result);
   }, [auth.nickname]);
 
   useEffect(() => {
+    const ID_REGEX = /^[a-zA-Z0-9]{3,15}$/;
     const result = ID_REGEX.test(auth.id);
     setValidId(result);
   }, [auth.id]);
 
   useEffect(() => {
+    const PW_REGEX = /^[a-zA-Z0-9]{3,20}$/;
     const result = PW_REGEX.test(auth.pw);
     setValidPw(result);
   }, [auth.pw]);
 
   useEffect(() => {
+    const EMAIL_REGEX = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]{3,4}$/;
     const result = EMAIL_REGEX.test(auth.email);
     setValidEmail(result);
   }, [auth.email]);
@@ -89,6 +88,7 @@ export default function SignIn() {
         className="body"
         style={{
           flexDirection: 'column',
+          justifyContent: 'flex-start',
         }}
       >
         <Header />
@@ -101,71 +101,89 @@ export default function SignIn() {
         >
           회원가입
         </h1>
-
         <UserInput
           text="닉네임"
           key="signName"
           name="nickname"
           UserInput={onChange}
         ></UserInput>
-        {!validNick ? (
-          <p
-            style={{
-              color: 'red',
-              lineHeight: 2.5,
-            }}
-          >
-            올바르지 않은 형식입니다.
-          </p>
-        ) : (
-          <p>사용 가능한 닉네임입니다.</p>
-        )}
+        <span
+          style={{
+            color: '#FF9A9A',
+            fontFamily: 'Cafe24SsurroundAir',
+            fontSize: '70%',
+          }}
+        >
+          {!validNick
+            ? '5자 이하의 한글, 영어, 숫자로만 입력 가능합니다.'
+            : '확인되었습니다.'}
+        </span>
 
         <UserInput text="아이디" key="signId" name="id" UserInput={onChange} />
-        {!validId ? (
-          <p style={{color: 'red', lineHeight: 2.5}}>
-            올바르지 않은 형식입니다.
-          </p>
-        ) : (
-          <p>사용 가능한 아이디입니다.</p>
-        )}
+        <span
+          style={{
+            color: '#FF9A9A',
+            fontFamily: 'Cafe24SsurroundAir',
+            fontSize: '70%',
+          }}
+        >
+          {!validId
+            ? '3자 이상 15자 이하의 알파벳, 숫자로만 입력 가능합니다.'
+            : '확인되었습니다.'}
+        </span>
         <UserInput
+          type="password"
           text="비밀번호"
           key="signPw"
           name="pw"
           UserInput={onChange}
         />
-        {!validPw ? (
-          <p style={{color: 'red', lineHeight: 2.5}}>
-            올바르지 않은 형식입니다.
-          </p>
-        ) : (
-          <p>사용 가능한 비밀번호입니다:)</p>
-        )}
+        <span
+          style={{
+            color: '#FF9A9A',
+            fontFamily: 'Cafe24SsurroundAir',
+            fontSize: '70%',
+          }}
+        >
+          {!validPw ? '20자 이하로 입력 가능합니다.' : '확인되었습니다.'}
+        </span>
         <UserInput
+          type="password"
           text="비밀번호 확인"
           key="signPwCheck"
           name="confirmPw"
           UserInput={onChange}
         />
-        {auth.pw !== auth.confirmPw ? (
-          <p style={{color: 'red', lineHeight: 2.5}}>
-            입력하신 비밀번호와 다릅니다
-          </p>
-        ) : null}
+        <span
+          style={{
+            color: '#FF9A9A',
+            fontFamily: 'Cafe24SsurroundAir',
+            fontSize: '70%',
+          }}
+        >
+          {auth.pw.length !== 0 &&
+          auth.pw.length === auth.confirmPw.length &&
+          auth.pw === auth.confirmPw
+            ? '확인되었습니다.'
+            : '입력하신 비밀번호가 다릅니다.'}
+        </span>
         <UserInput
           text="이메일"
           key="signEmail"
           name="email"
           UserInput={onChange}
         />
-        {!validEmail ? (
-          <p style={{color: 'red', lineHeight: 2.5}}>
-            올바르지 않은 형식입니다.
-          </p>
-        ) : (
-          <p>사용 가능한 이메일입니다:)</p>
-        )}
+        <span
+          style={{
+            color: '#FF9A9A',
+            fontFamily: 'Cafe24SsurroundAir',
+            fontSize: '70%',
+          }}
+        >
+          {!validEmail
+            ? '이메일 형식으로만 입력 가능합니다. (ex: a123@abc.abc)'
+            : '확인되었습니다.'}
+        </span>
         <div
           style={{
             display: 'flex',
@@ -177,7 +195,7 @@ export default function SignIn() {
             text="입력 완료"
             width="13vw"
             height="7vh"
-            margin="40px 20px"
+            margin="20px 20px"
             onClick={sign_in}
             disabled={validId}
           />
@@ -187,14 +205,14 @@ export default function SignIn() {
             width="13vw"
             height="7vh"
             color="#FF9A9A"
-            margin="40px 20px"
+            margin="20px 20px"
           />
           <HomeButton
             link="/login"
             text="로그인 하러 가기"
             width="13vw"
             height="7vh"
-            margin="40px 20px"
+            margin="20px 20px"
           />
         </div>
       </div>

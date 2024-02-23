@@ -54,6 +54,7 @@ export default function Login() {
         className="body"
         style={{
           flexDirection: 'column',
+          justifyContent: 'flex-start',
         }}
       >
         <Header />
@@ -63,13 +64,14 @@ export default function Login() {
         <UserInput
           text="비밀번호"
           key="loginPassword"
-          // type="password"
+          type="password"
           UserInput={onchangePw}
         />
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-around',
+            marginTop: '10vh',
           }}
         >
           <HomeButton
