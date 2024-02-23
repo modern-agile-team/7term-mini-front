@@ -12,14 +12,14 @@ import {useEffect, useState} from 'react';
 
 export default function PostView() {
   const [categories, setCategories] = useState('');
-  function view_post() {
+
+  useEffect(() => {
     fetch('http://15.164.231.77:3000/boards/7', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
-      // body: JSON.stringify({}),
     })
       .then(response => response.json())
       .then(result => {
@@ -28,23 +28,21 @@ export default function PostView() {
       .catch(err => {
         alert('에러');
       });
-  }
-
-  useEffect(() => {
-    console.log(categories);
   }, []);
+
+  console.log(categories.board.no);
 
   const nowTime = moment().format('YYYY-MM-DD HH:mm');
   return (
     <>
       <div className="greenBox1">
         <div className="postViewHeader">
-          <span>{view_post()}</span>
+          <span></span>
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>
-        <div className="postViewBody">{view_post()}</div>
+        <div className="postViewBody">{categories.board.content}</div>
         <div className="postViewFooter">
           <span>· 수정하기</span>
           <div className="community">
