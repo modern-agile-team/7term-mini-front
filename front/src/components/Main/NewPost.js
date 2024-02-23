@@ -1,33 +1,64 @@
-import * as React from 'react';
-// Pagination from '@mui/material/Pagination';
-//import Stack from '@mui/material/Stack';
-import NoRangLogo from '../entrie/NoRangLogo';
-import Board from './Board';
+import Remove from './Remove';
+import moment from 'moment';
+import 'moment/locale/ko';
+import BeeLogo from '../entrie/BeeLogo';
+import Category from './Category';
+import Pencil from '../entrie/Pencil';
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import WritePage from './WritePage';
-//import PostView from './PostView';
 
-//<Stack spacing={4}>
-//              <Pagination count={10} showFirstButton showLastButton />
-//           </Stack>
+export default function WritePage() {
+  const nowTime = moment().format('YYYY-MM-DD HH:mm');
+  const [text, setText] = useState('');
 
-export default function NewPost() {
+  function onChange(event) {
+    setText(event.target.value);
+  }
   return (
     <>
-      <div className="body">
-        <section className="leftSection">
-          <Link to="/" className="leftLogoSection">
-            <NoRangLogo width="15vw" margin="6px 5px" />
+      <div className="greenBox">
+        <div className="postInfo">
+          {nowTime}
+          <Link to="/NORANG">
+            <Remove width="2vw" margin="0px 10px" />
           </Link>
-          <div className="leftBoardSection">
-            <Board />
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          <div className="postHeader">
+            <BeeLogo width="3.5vw" margin="0vw 0vw 0vw 1.5vw" />
+            <form className="categorySelect">
+              <Category />
+            </form>
           </div>
-        </section>
-        <section>
-          <div className="rightSection">
-            <WritePage />
+          <hr
+            style={{
+              marginTop: '1.5vh',
+              border: '1.5px dashed #4C5F5D',
+              width: '63vw',
+            }}
+          ></hr>
+          <div className="postBody">
+            <textarea
+              type="text"
+              className="writeField"
+              placeholder="200자 이내로 입력하시오."
+              maxlength="200"
+              onChange={onChange}
+            ></textarea>
+            <div className="postButton">
+              <Pencil width="3.5vw" margin="0px 0px 10px 0px" />
+              글쓰기
+              <div className="textLength">{`${text.length} / 200`}</div>
+            </div>
           </div>
-        </section>
+        </div>
       </div>
     </>
   );

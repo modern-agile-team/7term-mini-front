@@ -1,7 +1,14 @@
 import {Link} from 'react-router-dom';
 import Remove from './Remove';
 import moment from 'moment';
-import {useEffect, useState} from 'react';
+import Greaiting from '../entrie/Greaiting';
+import UserComment from '../entrie/UserComment';
+import Pagination from '@mui/material/Pagination';
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
+import Pencil from '../entrie/Pencil';
+import Comments from './Comments';
+import {useEffect} from 'react';
 
 export default function PostView() {
   function view_post() {
@@ -29,14 +36,14 @@ export default function PostView() {
   const nowTime = moment().format('YYYY-MM-DD HH:mm');
   return (
     <>
-      <div className="greenBox">
+      <div className="greenBox1">
         <div className="postViewHeader">
           <span>view_post().category_no</span>
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>
-        <div className="postViewBody"></div>
+        <div className="postViewBody">본문</div>
         <div className="postViewfooter">수정하기</div>
       </div>
     </>

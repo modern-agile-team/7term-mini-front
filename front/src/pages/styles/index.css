@@ -18,6 +18,7 @@
   margin: 0;
   font-family: 'Cafe24Ssurround';
   color: #606060;
+  text-decoration-line: none;
 }
 
 .body {
@@ -122,6 +123,7 @@
   margin-left: 2vw;
   border-radius: 30px;
   background-color: #fdfae1;
+  flex-direction: column;
 }
 
 .logoSection {
@@ -237,4 +239,105 @@ label {
 .textLength {
   margin-top: 29vh;
   font-family: 'Cafe24SsurroundAir';
+}
+
+/* Main Post 불러오는 페이지 CSS */
+
+.post {
+  width: 67vw;
+  height: 24vh;
+  background-color: #b5d3a7;
+  border-radius: 30px;
+  margin: 1.5vh 0vh;
+}
+
+.postContent {
+  font-family: 'Cafe24SsurroundAir';
+  padding: 0vw 2.5vw 2.5vw 2.5vw;
+  font-size: 85%;
+}
+
+.post:hover {
+  font-weight: bolder;
+}
+
+/*글 조회 (PostView) 페이지 CSS*/
+
+.community {
+  display: flex;
+  justify-content: center;
+}
+
+.postViewHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5vw 1vw 0vw 1.9vw;
+  font-family: 'Cafe24SsurroundAir';
+}
+
+.greenBox1 {
+  width: 66vw;
+  height: 81vh;
+  background-color: #b5d3a7;
+  border-radius: 30px;
+}
+
+.postViewBody {
+  display: flex;
+  justify-content: center;
+  padding: 1vw 2.5vw 1.5vw 1.9vw;
+  font-family: 'Cafe24SsurroundAir';
+  font-size: 90%;
+}
+
+.postViewFooter {
+  display: flex;
+  justify-content: space-between;
+  padding: 0vw 1.9vw 0.5vw 1.9vw;
+}
+
+.pagenation {
+  display: flex;
+  justify-content: center;
+}
+
+.commentField {
+  width: 63vw;
+  height: 12vh;
+  background-color: #e1eddc;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inputComment {
+  width: 50vw;
+  height: 3vh;
+  padding: 20px;
+  margin-left: 1vw;
+  background-color: #f3f8f1;
+  border-radius: 20px;
+  border: none;
+  resize: none;
+  outline: none;
+  font-family: 'Cafe24SsurroundAir';
+}
+
+.commentButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 1vw;
+  color: #647d87;
+  font-size: 80%;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1vh;
 }

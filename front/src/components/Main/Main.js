@@ -1,21 +1,18 @@
 import * as React from 'react';
-// Pagination from '@mui/material/Pagination';
-//import Stack from '@mui/material/Stack';
+
 import NoRangLogo from '../entrie/NoRangLogo';
 import Board from './Board';
 import {Link} from 'react-router-dom';
 import PostList from './PostList';
+import PostView from './PostView';
+import NewPost from './NewPost';
 
-//<Stack spacing={4}>
-//              <Pagination count={10} showFirstButton showLastButton />
-//           </Stack>
-
-export default function Main() {
+export default function Main(props) {
   return (
     <>
       <div className="body">
         <section className="leftSection">
-          <Link to="/" className="leftLogoSection">
+          <Link to="/NORANG" className="leftLogoSection">
             <NoRangLogo width="15vw" margin="6px 5px" />
           </Link>
           <div className="leftBoardSection">
@@ -24,7 +21,13 @@ export default function Main() {
         </section>
         <section>
           <div className="rightSection">
-            <PostList />
+            {props.page === 'detailPost' ? (
+              <PostView />
+            ) : props.page === 'newPost' ? (
+              <NewPost />
+            ) : (
+              <PostList />
+            )}
           </div>
         </section>
       </div>

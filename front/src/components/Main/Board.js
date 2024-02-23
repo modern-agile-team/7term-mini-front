@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import BeeLogo from '../entrie/BeeLogo';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Board() {
   const ButtonBox = styled.div`
@@ -31,7 +32,9 @@ export default function Board() {
           <ButtonBox>님 반갑습니다!</ButtonBox>
           <div className="buttonSection">
             <div className="logoutButton">로그아웃</div>
-            <div className="newPostButton">글쓰기</div>
+            <Link to="/new-post" className="newPostButton">
+              글쓰기
+            </Link>
           </div>
         </section>
         <hr color="#E4E1CB"></hr>
