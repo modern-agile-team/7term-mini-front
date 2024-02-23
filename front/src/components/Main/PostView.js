@@ -8,9 +8,10 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Pencil from '../entrie/Pencil';
 import Comments from './Comments';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 export default function PostView() {
+  const [categories, setCategories] = useState('');
   function view_post() {
     fetch('http://15.164.231.77:3000/boards/7', {
       method: 'GET',
@@ -22,7 +23,7 @@ export default function PostView() {
     })
       .then(response => response.json())
       .then(result => {
-        const results = result;
+        setCategories(result);
       })
       .catch(err => {
         alert('에러');
@@ -30,7 +31,7 @@ export default function PostView() {
   }
 
   useEffect(() => {
-    view_post();
+    console.log(categories);
   }, []);
 
   const nowTime = moment().format('YYYY-MM-DD HH:mm');
@@ -38,19 +39,12 @@ export default function PostView() {
     <>
       <div className="greenBox1">
         <div className="postViewHeader">
-          <span>view_post().category_no</span>
+          <span>{view_post()}</span>
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>
-        <div className="postViewBody">
-          동해물과 백두산이 마르고 닳도록 하느님이 보우 하사 우리나라 만세
-          무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세 남산 위에 저
-          소나무 철갑을 두른 듯 바람 서리 불변함은 우리 기상일세 무궁화 삼천리
-          화려 강산 대한 사람 대한으로 길이 보전하세 Hey 한국! Hey 한국! oh oh
-          oh oh - 대! 한! 민! 국! 대! 한! 민! 국! 가을 하늘 공활한데 높고 구름
-          없이 밝은 달은 우리 가슴 일편단심일세 무궁화 삼천리 화려 강산
-        </div>
+        <div className="postViewBody">{view_post()}</div>
         <div className="postViewFooter">
           <span>· 수정하기</span>
           <div className="community">

@@ -52,8 +52,6 @@ export default function SignIn() {
   const [validPw, setValidPw] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
 
-  console.log(validEmail);
-
   useEffect(() => {
     const result = NICKNAME_REGEX.test(auth.nickname);
     setValidNick(result);
