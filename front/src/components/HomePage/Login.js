@@ -29,7 +29,8 @@ export default function Login() {
           }
         })
         .catch(err => {
-          alert(err);
+          console.log(err);
+          alert('ㅇㄹ');
         });
     } else {
       alert('login failed');
