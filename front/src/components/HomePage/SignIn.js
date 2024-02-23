@@ -47,6 +47,8 @@ export default function SignIn() {
   const [validPw, setValidPw] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
 
+  console.log(validEmail);
+
   useEffect(() => {
     const NICKNAME_REGEX = /^[a-zA-Zㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{1,5}$/;
     const result = NICKNAME_REGEX.test(auth.nickname);

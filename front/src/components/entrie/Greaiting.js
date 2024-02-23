@@ -11,7 +11,7 @@ export default function Greaiting(props) {
         src={logo}
         alt="좋아요"
       />
-      <span>{props.length}</span>
+      <span>1</span>
     </>
   );
 }
