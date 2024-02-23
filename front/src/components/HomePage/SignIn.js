@@ -8,7 +8,7 @@ export default function SignIn() {
   const navigate = useNavigate();
   function sign_in() {
     if (validNick && validId && validPw && validEmail) {
-      fetch('http://15.164.231.77:3000/auth/signup', {
+      fetch('http://15.164.231.77:3000/users/sign-up', {
         method: 'POST',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify({
@@ -45,12 +45,14 @@ export default function SignIn() {
   const NICKNAME_REGEX = /^[a-zA-Zㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{1,5}$/;
   const ID_REGEX = /^[a-zA-Z0-9]{6,15}$/;
   const PW_REGEX = /^[a-zA-Z0-9]{6,20}$/;
-  const EMAIL_REGEX = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{8,30}$/;
+  const EMAIL_REGEX = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{1,4}$/;
 
   const [validNick, setValidNick] = useState(false);
   const [validId, setValidId] = useState(false);
   const [validPw, setValidPw] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
+
+  console.log(validEmail);
 
   useEffect(() => {
     const result = NICKNAME_REGEX.test(auth.nickname);
@@ -70,7 +72,7 @@ export default function SignIn() {
   useEffect(() => {
     const result = EMAIL_REGEX.test(auth.email);
     setValidEmail(result);
-  }, [auth.nickname]);
+  }, [auth.email]);
 
   const onChange = e => {
     setAuth({
