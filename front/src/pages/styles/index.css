@@ -42,9 +42,10 @@
 }
 
 .inputSection {
-  width: 35%;
-  height: 8%;
-  margin-top: 2vh;
+  width: 35vw;
+  height: 7vh;
+  font-size: 90%;
+  margin: 1vh 0vh;
   border-radius: 30px;
   background-color: #fdfae1;
   display: flex;
@@ -54,8 +55,10 @@
 }
 
 .HeaderSection {
-  width: 85%;
-  height: 20%;
+  width: 85vw;
+  height: 11vh;
+  padding: 3vh 0vw;
+  margin-top: 1.5vh;
   border-radius: 30px;
   background-color: #fdfae1;
   display: flex;
@@ -65,7 +68,7 @@
 }
 
 .button {
-  margin-top: 7%;
+  margin-top: 2vh;
   border: solid 1px #e4e1cb;
   border-radius: 30px;
   background-color: #fff;
