@@ -11,7 +11,11 @@ export default function Greaiting(props) {
         src={logo}
         alt="좋아요"
       />
+<<<<<<< HEAD
       <span></span>
+=======
+      <span>{props.length}</span>
+>>>>>>> 48033b5baa238e36dbd7714a7d3ab6125c124799
     </>
   );
 }

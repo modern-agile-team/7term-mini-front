@@ -11,7 +11,7 @@ export default function UserComment(props) {
         src={logo}
         alt="댓글"
       />
-      <span>2</span>
+      <span>props.length</span>
     </>
   );
 }
