@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <>
       <Link to="/" className="HeaderSection">
-        <NoRangLogo width="20vw" />
+        <NoRangLogo width="17vw" />
       </Link>
     </>
   );
