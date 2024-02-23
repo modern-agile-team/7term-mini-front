@@ -15,7 +15,7 @@ export default function PostView() {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
+        const results = result;
       })
       .catch(err => {
         alert('에러');
@@ -31,12 +31,12 @@ export default function PostView() {
     <>
       <div className="greenBox">
         <div className="postViewHeader">
-          <span># 페이지번호 :: {nowTime}</span>
+          <span>view_post().category_no</span>
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>
-        <div className="postViewBody">본문</div>
+        <div className="postViewBody"></div>
         <div className="postViewfooter">수정하기</div>
       </div>
     </>
