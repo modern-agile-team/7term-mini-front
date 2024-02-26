@@ -264,6 +264,10 @@ label {
   font-weight: bolder;
 }
 
+.pageMove {
+  display: flex;
+}
+
 /*글 조회 (PostView) 페이지 CSS*/
 
 .community {

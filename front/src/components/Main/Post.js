@@ -4,6 +4,7 @@ import Remove from './Remove';
 import {Link} from 'react-router-dom';
 
 export default function Post(props) {
+  console.log(props);
   return (
     <>
       <Link to="/detail-post" className="post">
@@ -22,24 +23,24 @@ export default function Post(props) {
           className="
 postContent"
         >
-          {props.content}
+          {props.props.content}
           <footer
             style={{
               display: 'flex',
               justifyContent: 'right',
               alignItems: 'center',
-              marginBottom: '50px',
+              marginTop: '8vh',
             }}
           >
             <Greaiting
               width="1.5vw"
               margin="0 0.5vw"
-              length={props.love_count}
+              length={props.props.love_count}
             />
             <UserComment
               width="1.5vw"
               margin="0 0.5vw"
-              length={props.comment_count}
+              length={props.props.comment_count}
             />
           </footer>
         </div>
