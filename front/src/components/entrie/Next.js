@@ -10,7 +10,6 @@ export default function Next(props) {
         }}
         src={logo}
         alt="다음"
-        onClick={props.onClick}
       />
     </>
   );

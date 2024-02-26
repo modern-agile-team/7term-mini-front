@@ -10,7 +10,6 @@ export default function Previous(props) {
         }}
         src={logo}
         alt="이전"
-        onClick={props.onClick}
       />
     </>
   );
