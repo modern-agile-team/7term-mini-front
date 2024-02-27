@@ -1,19 +1,23 @@
 import * as React from 'react';
-
+import {useSearchParams} from 'react-router-dom';
 import Post from './Post';
 import LoadMainPage from '../../features/LoadMainPage';
 import Previous from '../entrie/Previous';
 import Next from '../entrie/Next';
 
-export default function PostList() {
+export default function PostList(a) {
   const [data, setData] = React.useState([]);
   const [wholePage, setWholePage] = React.useState();
   const [page, setPage] = React.useState(1);
-
-  console.log(data);
+  const [searchParams] = useSearchParams();
+  const [category, setCategory] = React.useState(0);
 
   React.useEffect(() => {
-    LoadMainPage({current: page, no: 0})
+    setCategory(searchParams.get('category'));
+  }, [searchParams]);
+
+  React.useEffect(() => {
+    LoadMainPage({current: page, no: category})
       .then(response => {
         setData(response.boards);
         setWholePage(response.wholePage);
@@ -21,7 +25,7 @@ export default function PostList() {
       .catch(error => {
         console.error('Error:', error);
       });
-  }, [page]);
+  }, [page, category]);
 
   function previous() {
     if (page > 0) {
@@ -48,7 +52,13 @@ export default function PostList() {
         <div onClick={previous}>
           <Previous width="2.8vw" margin="0 30vw" />
         </div>
-        {page}
+        <span
+          style={{
+            marginTop: '1.8vh',
+          }}
+        >
+          {page}
+        </span>
         <div onClick={next}>
           <Next width="2.8vw" margin="0 30vw" />
         </div>

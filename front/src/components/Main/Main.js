@@ -12,7 +12,7 @@ export default function Main(props) {
     <>
       <div className="body">
         <section className="leftSection">
-          <Link to="/NORANG" className="leftLogoSection">
+          <Link to="/" className="leftLogoSection">
             <NoRangLogo width="15vw" margin="6px 5px" />
           </Link>
           <div className="leftBoardSection">

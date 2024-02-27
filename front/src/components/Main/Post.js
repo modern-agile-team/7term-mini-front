@@ -1,8 +1,8 @@
 import Greaiting from '../entrie/Greaiting';
 import UserComment from '../entrie/UserComment';
 import Remove from './Remove';
-import {Link} from 'react-router-dom';
-import PostDel from '../../features/PostDel';
+// import {Link} from 'react-router-dom';
+// import PostDel from '../../features/PostDel';
 
 export default function Post(props) {
   const {content, love_count, comment_count} = props;
@@ -16,7 +16,7 @@ export default function Post(props) {
             margin: '1vw 1vw 0vw 1vw',
           }}
         >
-          <div onClick={}>
+          <div>
             <Remove width="1.5vw" margin="0" />
           </div>
         </header>

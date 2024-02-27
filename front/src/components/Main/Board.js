@@ -42,12 +42,25 @@ export default function Board() {
         </section>
         <hr color="#E4E1CB"></hr>
         <section className="boarderSection">
-          <ButtonBox>전체</ButtonBox>
-          <ButtonBox>자유</ButtonBox>
-          <ButtonBox>인기</ButtonBox>
-          <ButtonBox>10대</ButtonBox>
-          <ButtonBox>20대</ButtonBox>
-          <ButtonBox>30대</ButtonBox>
+          <Link to="/NORANG?category=0">
+            <ButtonBox id="0">전체</ButtonBox>
+          </Link>
+          <Link to="/NORANG?category=5">
+            <ButtonBox id="5">인기</ButtonBox>
+          </Link>
+          <Link to="/NORANG?category=4">
+            <ButtonBox id="4">자유</ButtonBox>
+          </Link>
+
+          <Link to="/NORANG?category=1">
+            <ButtonBox id="1">10대</ButtonBox>
+          </Link>
+          <Link to="/NORANG?category=2">
+            <ButtonBox id="2">20대</ButtonBox>
+          </Link>
+          <Link to="/NORANG?category=3">
+            <ButtonBox id="3">30대</ButtonBox>
+          </Link>
         </section>
       </div>
     </>
