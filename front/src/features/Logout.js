@@ -10,6 +10,7 @@ export default function Logout() {
       })
         .then(response => response.json())
         .then(response => {
+          window.localStorage.clear();
           alert(response.message);
         });
     }

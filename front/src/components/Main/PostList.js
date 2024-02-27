@@ -16,6 +16,8 @@ export default function PostList(a) {
     setCategory(searchParams.get('category'));
   }, [searchParams]);
 
+  console.log(category);
+
   React.useEffect(() => {
     LoadMainPage({current: page, no: category})
       .then(response => {
@@ -50,7 +52,7 @@ export default function PostList(a) {
       ))}
       <div className="pageMove">
         <div onClick={previous}>
-          <Previous width="2.8vw" margin="0 30vw" />
+          <Previous width="2.8vw" margin="0 30vw 0 0" />
         </div>
         <span
           style={{
@@ -60,7 +62,7 @@ export default function PostList(a) {
           {page}
         </span>
         <div onClick={next}>
-          <Next width="2.8vw" margin="0 30vw" />
+          <Next width="2.8vw" margin="0 0 0 30vw" />
         </div>
       </div>
     </>

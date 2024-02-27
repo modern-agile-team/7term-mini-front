@@ -5,6 +5,13 @@ import {Link} from 'react-router-dom';
 import Logout from '../../features/Logout';
 
 export default function Board() {
+  const [nickName, setNickName] = React.useState();
+  const loginCheck = window.localStorage.getItem('name');
+
+  React.useEffect(() => {
+    setNickName(loginCheck);
+  }, [loginCheck]);
+
   const ButtonBox = styled.div`
     font-family: 'Cafe24SsurroundAir';
     margin: 10px 0px 0px 0px;
@@ -30,7 +37,7 @@ export default function Board() {
           <BeeLogo width="4vw" margin="10px 0px" />
         </section>
         <section className="infoSection">
-          <ButtonBox>님 반갑습니다!</ButtonBox>
+          <ButtonBox>{nickName ? nickName : '@@'}님 반갑습니다!</ButtonBox>
           <div className="buttonSection">
             <Link to="/" onClick={Logout} className="logoutButton">
               로그아웃
@@ -51,7 +58,6 @@ export default function Board() {
           <Link to="/NORANG?category=4">
             <ButtonBox id="4">자유</ButtonBox>
           </Link>
-
           <Link to="/NORANG?category=1">
             <ButtonBox id="1">10대</ButtonBox>
           </Link>

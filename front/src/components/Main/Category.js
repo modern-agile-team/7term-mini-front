@@ -4,12 +4,8 @@ export default function Category() {
       <span>카테고리 선택</span>
       <div className="radios">
         <label>
-          <input type="radio" name="category" value="1" />
+          <input type="radio" name="category" value="1" checked />
           자유
-        </label>
-        <label>
-          <input type="radio" name="category" value="2" />
-          인기
         </label>
         <label>
           <input type="radio" name="category" value="3" />

@@ -1,3 +1,5 @@
+import NewAccessToken from './NewAccessToken';
+
 export default function PostDel(props) {
   try {
     if (window.confirm('게시글을 삭제하시겠습니까? (작성자만 가능합니다.)')) {
@@ -14,6 +16,7 @@ export default function PostDel(props) {
         });
     }
   } catch (err) {
+    NewAccessToken();
     console.log(err);
   }
 }

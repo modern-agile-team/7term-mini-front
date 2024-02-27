@@ -1,3 +1,5 @@
+import NewAccessToken from './NewAccessToken';
+
 export default function LoadMainPage(props) {
   return new Promise((resolve, reject) => {
     try {
