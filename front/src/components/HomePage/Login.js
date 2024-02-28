@@ -25,7 +25,8 @@ export default function Login() {
           if (result.accessToken) {
             localStorage.setItem('accessToken', result.accessToken);
             localStorage.setItem('refreshToken', result.refreshToken);
-            navigate('/NORANG');
+            navigate(`/NORANG`);
+            window.localStorage.setItem('name', result.userNickName);
           }
         })
         .catch(err => {

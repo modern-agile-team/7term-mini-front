@@ -1,12 +1,16 @@
+import PostDel from '../../features/PostDel';
 import Greaiting from '../entrie/Greaiting';
 import UserComment from '../entrie/UserComment';
 import Remove from './Remove';
 import {Link} from 'react-router-dom';
+import {useState} from 'react';
 
 export default function Post(props) {
+  const {content, love_count, comment_count, no} = props;
+  const [status, setStatus] = useState();
   return (
     <>
-      <Link to="/detail-post" className="post">
+      <div className="post">
         <header
           style={{
             display: 'flex',
@@ -14,36 +18,38 @@ export default function Post(props) {
             margin: '1vw 1vw 0vw 1vw',
           }}
         >
-          <Link to="#">
+          <Link
+            onClick={() => {
+              PostDel(no).then(setStatus(1));
+            }}
+          >
             <Remove width="1.5vw" margin="0" />
           </Link>
         </header>
-        <div
+        <Link
+          to="/detail-post"
           className="
 postContent"
         >
-          {props.content}
+          {content}
           <footer
             style={{
               display: 'flex',
               justifyContent: 'right',
               alignItems: 'center',
-              marginBottom: '50px',
+              marginTop: '8vh',
+              marginRight: '1.5vw',
             }}
           >
-            <Greaiting
-              width="1.5vw"
-              margin="0 0.5vw"
-              length={props.love_count}
-            />
+            <Greaiting width="1.5vw" margin="0 0.5vw" length={love_count} />
             <UserComment
               width="1.5vw"
               margin="0 0.5vw"
-              length={props.comment_count}
+              length={comment_count}
             />
           </footer>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </>
   );
 }
