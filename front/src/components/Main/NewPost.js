@@ -5,33 +5,34 @@ import {useNavigate} from 'react-router-dom';
 import Pencil from '../entrie/Pencil';
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
+import NewAccessToken from '../../features/NewAccessToken';
 
 export default function NewPost() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState({
-    category: '0',
+  const [body, setBody] = useState({
+    category: '',
     content: '',
   });
 
   const onChange = e => {
-    setAuth({
-      ...auth,
+    setBody({
+      ...body,
       [e.target.name]: e.target.value,
     });
   };
 
   function postSend() {
-    if (auth.content.length !== 0) {
+    if (body.content.length !== 0) {
       if (window.confirm('작성하시겠습니까?')) {
         fetch('http://15.164.231.77:3000/boards/', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
           body: JSON.stringify({
-            categoryNo: auth.category,
-            content: auth.content,
+            categoryNo: body.category,
+            content: body.content,
           }),
         })
           .then(response => response.json())
@@ -42,7 +43,10 @@ export default function NewPost() {
             }
           })
           .catch(err => {
-            console.log(err);
+            if (err.response.statusCode === 401) {
+              NewAccessToken();
+              window.location.reload();
+            }
           });
       }
     } else {
@@ -135,7 +139,7 @@ export default function NewPost() {
             <div className="postButton" onClick={postSend}>
               <Pencil width="3.5vw" margin="0px 0px 10px 0px" />
               글쓰기
-              <div className="textLength">{`${auth.content.length} / 200`}</div>
+              <div className="textLength">{`${body.content.length} / 200`}</div>
             </div>
           </div>
         </div>

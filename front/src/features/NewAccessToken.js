@@ -7,15 +7,16 @@ export default function NewAccessToken() {
     },
   })
     .then(response => {
+      console.log('액세스토큰 재발행');
       return response.json();
     })
     .then(result => {
       if (result.accessToken) {
         localStorage.setItem('accessToken', result.accessToken);
       }
+      window.location.reload();
     })
     .catch(err => {
       console.log(err);
     });
 }
-//errocode : 401
