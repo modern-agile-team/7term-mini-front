@@ -119,14 +119,14 @@ export default function PostView() {
               onChange={onchangeComment}
             />
             <Pencil width="4vh"></Pencil>
-            <button
+            <div
               className="CommentButton"
               onClick={() => {
                 create_comment();
               }}
             >
               댓글작성하기
-            </button>
+            </div>
           </div>
         </div>
         <div className="commentList">
