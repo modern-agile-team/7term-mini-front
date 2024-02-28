@@ -7,7 +7,6 @@ import {useState} from 'react';
 
 export default function Post(props) {
   const {content, love_count, comment_count, no} = props;
-  const [status, setStatus] = useState();
   return (
     <>
       <div className="post">
@@ -20,7 +19,7 @@ export default function Post(props) {
         >
           <Link
             onClick={() => {
-              PostDel(no).then(setStatus(1));
+              PostDel(no);
             }}
           >
             <Remove width="1.5vw" margin="0" />

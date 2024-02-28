@@ -15,9 +15,6 @@ export default function LoadMainPage(props) {
       )
         .then(response => {
           if (!response.ok) {
-            if (response.status === 401) {
-              NewAccessToken();
-            }
             throw new Error('Network response was not ok');
           }
           return response.json();
@@ -29,7 +26,9 @@ export default function LoadMainPage(props) {
           reject(error);
         });
     } catch (err) {
-      reject(err);
+      if (err.response.status === 401) {
+        NewAccessToken();
+      }
     }
   });
 }

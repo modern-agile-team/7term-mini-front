@@ -13,6 +13,7 @@ export default function PostDel(props) {
         .then(response => response.json())
         .then(response => {
           if (response.statusCode === 200) {
+            window.location.reload();
             alert(response.message);
           } else if (response.statusCode === 401) {
             NewAccessToken();
