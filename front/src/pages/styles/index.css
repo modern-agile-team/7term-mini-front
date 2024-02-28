@@ -204,7 +204,7 @@
 }
 label {
   font-family: 'Cafe24SsurroundAir';
-  margin: 5px;
+  margin: 10px;
 }
 
 .postBody {
@@ -262,6 +262,10 @@ label {
 
 .post:hover {
   font-weight: bolder;
+}
+
+.pageMove {
+  display: flex;
 }
 
 /*글 조회 (PostView) 페이지 CSS*/

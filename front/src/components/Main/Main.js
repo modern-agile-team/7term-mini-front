@@ -1,8 +1,7 @@
 import * as React from 'react';
-
+import {Link} from 'react-router-dom';
 import NoRangLogo from '../entrie/NoRangLogo';
 import Board from './Board';
-import {Link} from 'react-router-dom';
 import PostList from './PostList';
 import PostView from './PostView';
 import NewPost from './NewPost';
