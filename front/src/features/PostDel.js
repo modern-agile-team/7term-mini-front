@@ -12,9 +12,12 @@ export default function PostDel(props) {
       })
         .then(response => response.json())
         .then(response => {
-          alert(response.message);
-          if (response.statusCode === 401) {
+          if (response.statusCode === 200) {
+            alert(response.message);
+          } else if (response.statusCode === 401) {
             NewAccessToken();
+          } else if (response.statusCode === 403) {
+            alert(response.message);
           }
         });
     }

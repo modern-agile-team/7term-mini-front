@@ -15,14 +15,12 @@ export default function LoadMainPage(props) {
       )
         .then(response => {
           if (!response.ok) {
+            if (response.status === 401) {
+              NewAccessToken();
+            }
             throw new Error('Network response was not ok');
           }
           return response.json();
-        })
-        .then(response => {
-          if (response.statusCode === 401) {
-            NewAccessToken();
-          }
         })
         .then(data => {
           resolve(data);

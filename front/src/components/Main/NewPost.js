@@ -37,7 +37,9 @@ export default function NewPost() {
           .then(response => response.json())
           .then(response => {
             alert(response.message);
-            navigate(`/NORANG`);
+            if (response.statusCode === 201) {
+              navigate(`/NORANG`);
+            }
           })
           .catch(err => {
             console.log(err);

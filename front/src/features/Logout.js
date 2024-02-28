@@ -12,11 +12,11 @@ export default function Logout() {
       })
         .then(response => response.json())
         .then(response => {
-          window.localStorage.clear();
-          alert(response.message);
           if (response.statusCode === 401) {
             NewAccessToken();
           }
+          window.localStorage.clear();
+          alert(response.message);
         });
     }
   } catch (err) {
