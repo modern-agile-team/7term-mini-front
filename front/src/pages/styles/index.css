@@ -276,6 +276,7 @@ label {
   justify-content: space-between;
   padding: 1.5vw 1vw 0vw 1.9vw;
   font-family: 'Cafe24SsurroundAir';
+  font-size: 100%;
 }
 
 .greenBox1 {
@@ -327,7 +328,7 @@ label {
   font-family: 'Cafe24SsurroundAir';
 }
 
-.commentButton {
+.CommentButton {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -335,6 +336,7 @@ label {
   margin-right: 1vw;
   color: #647d87;
   font-size: 80%;
+  background-color: #e1eddc;
 }
 
 .commentList {
