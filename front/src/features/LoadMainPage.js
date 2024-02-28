@@ -19,6 +19,11 @@ export default function LoadMainPage(props) {
           }
           return response.json();
         })
+        .then(response => {
+          if (response.statusCode === 401) {
+            NewAccessToken();
+          }
+        })
         .then(data => {
           resolve(data);
         })

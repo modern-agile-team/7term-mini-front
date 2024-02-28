@@ -1,3 +1,5 @@
+import NewAccessToken from './NewAccessToken';
+
 export default function Logout() {
   try {
     if (window.confirm('로그아웃 하시겠습니까?')) {
@@ -12,6 +14,9 @@ export default function Logout() {
         .then(response => {
           window.localStorage.clear();
           alert(response.message);
+          if (response.statusCode === 401) {
+            NewAccessToken();
+          }
         });
     }
   } catch (err) {

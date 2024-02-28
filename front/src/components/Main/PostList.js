@@ -12,14 +12,15 @@ export default function PostList(a) {
   const [searchParams] = useSearchParams();
   const [category, setCategory] = React.useState(0);
 
+  console.log(page);
+
   React.useEffect(() => {
     setCategory(searchParams.get('category'));
+    setPage(1);
   }, [searchParams]);
 
-  console.log(category);
-
   React.useEffect(() => {
-    LoadMainPage({current: page, no: category})
+    LoadMainPage({current: page, no: category ? category : 0})
       .then(response => {
         setData(response.boards);
         setWholePage(response.wholePage);

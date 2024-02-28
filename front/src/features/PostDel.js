@@ -3,7 +3,7 @@ import NewAccessToken from './NewAccessToken';
 export default function PostDel(props) {
   try {
     if (window.confirm('게시글을 삭제하시겠습니까? (작성자만 가능합니다.)')) {
-      fetch(`http://15.164.231.77:3000/boards/${props.no}`, {
+      fetch(`http://15.164.231.77:3000/boards/${props}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json',
@@ -13,10 +13,12 @@ export default function PostDel(props) {
         .then(response => response.json())
         .then(response => {
           alert(response.message);
+          if (response.statusCode === 401) {
+            NewAccessToken();
+          }
         });
     }
   } catch (err) {
-    NewAccessToken();
     console.log(err);
   }
 }
