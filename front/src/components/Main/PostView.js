@@ -12,9 +12,10 @@ import {useEffect, useState} from 'react';
 
 export default function PostView() {
   const [categories, setCategories] = useState('');
+  const [viewcomments, setViewComments] = useState('');
 
   useEffect(() => {
-    fetch('http://15.164.231.77:3000/boards/7', {
+    fetch('http://15.164.231.77:3000/boards/8', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -30,16 +31,53 @@ export default function PostView() {
       });
   }, []);
 
-  console.log(categories.no);
+  useEffect(() => {
+    fetch('http://15.164.231.77:3000/boards/2/comments', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    })
+      .then(response => response.json())
+      .then(result => {
+        setViewComments(result.board);
+      })
+      .catch(err => {
+        alert('에러');
+      });
+  }, []);
 
-  const nowTime = moment().format('YYYY-MM-DD HH:mm');
+  const [createComment, setCreateComment] = useState('');
+  function create_comment() {
+    fetch('http://15.164.231.77:3000/boards/2/comments', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+      body: JSON.stringify({
+        content: createComment,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        console.log(createComment);
+      })
+      .catch(err => {
+        alert('에러');
+      });
+  }
+  const onchangeComment = e => {
+    setCreateComment(e.target.value);
+  };
+
   return (
     <>
       <div className="greenBox1">
         <div className="postViewHeader">
-          <span>
-            {categories.no}번째 게시물 {categories.created_at}
-          </span>
+          #{categories.no} :: {categories.created_at}
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
@@ -48,7 +86,11 @@ export default function PostView() {
         <div className="postViewFooter">
           <span>· 수정하기</span>
           <div className="community">
-            <Greaiting width="1.5vw" margin="0 0.5vw" />
+            <Greaiting
+              width="1.5vw"
+              margin="0 0.5vw"
+              length={categories.love_count}
+            />
             <UserComment width="1.5vw" margin="0 0.5vw" />
           </div>
         </div>
@@ -74,11 +116,17 @@ export default function PostView() {
               type="text"
               className="inputComment"
               placeholder="100자 이내로 입력하시오."
+              onChange={onchangeComment}
             />
-            <div className="commentButton">
-              <Pencil width="2.5vw" margin="0px 0px 10px 0px" />
-              댓글 남기기
-            </div>
+            <Pencil width="4vh"></Pencil>
+            <button
+              className="CommentButton"
+              onClick={() => {
+                create_comment();
+              }}
+            >
+              댓글작성하기
+            </button>
           </div>
         </div>
         <div className="commentList">
