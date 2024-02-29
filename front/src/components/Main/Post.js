@@ -3,7 +3,7 @@ import Greaiting from '../entrie/Greaiting';
 import UserComment from '../entrie/UserComment';
 import Remove from './Remove';
 import {Link} from 'react-router-dom';
-import {useState} from 'react';
+import {useSearchParams, useParams} from 'react-router-dom';
 
 export default function Post(props) {
   const {content, love_count, comment_count, no} = props;
@@ -25,11 +25,7 @@ export default function Post(props) {
             <Remove width="1.5vw" margin="0" />
           </Link>
         </header>
-        <Link
-          to="/detail-post"
-          className="
-postContent"
-        >
+        <Link to={`/detail-post?no=${no}`} className="postContent">
           {content}
           <footer
             style={{

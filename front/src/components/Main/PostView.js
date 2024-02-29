@@ -1,21 +1,20 @@
-import {Link} from 'react-router-dom';
+import {Link, useSearchParams} from 'react-router-dom';
 import Remove from './Remove';
-import moment from 'moment';
 import Greaiting from '../entrie/Greaiting';
 import UserComment from '../entrie/UserComment';
-import Pagination from '@mui/material/Pagination';
 import * as React from 'react';
-import Stack from '@mui/material/Stack';
 import Pencil from '../entrie/Pencil';
 import Comments from './Comments';
 import {useEffect, useState} from 'react';
 
-export default function PostView() {
+export default function PostView(props) {
   const [categories, setCategories] = useState('');
-  const [viewcomments, setViewComments] = useState('');
+  const [viewComments, setViewComments] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const no1 = searchParams.get('no');
 
   useEffect(() => {
-    fetch('http://15.164.231.77:3000/boards/8', {
+    fetch(`http://15.164.231.77:3000/boards/${no1}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -31,8 +30,8 @@ export default function PostView() {
       });
   }, []);
 
-  useEffect(() => {
-    fetch('http://15.164.231.77:3000/boards/2/comments', {
+  useEffect(props => {
+    fetch(`http://15.164.231.77:3000/boards/2/comments/1`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -77,7 +76,10 @@ export default function PostView() {
     <>
       <div className="greenBox1">
         <div className="postViewHeader">
-          #{categories.no} :: {categories.created_at}
+          <post>
+            {categories.nickname}
+            {categories.created_at}
+          </post>
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
@@ -118,7 +120,7 @@ export default function PostView() {
               placeholder="100자 이내로 입력하시오."
               onChange={onchangeComment}
             />
-            <Pencil width="4vh"></Pencil>
+            <Pencil width="2.5vw"></Pencil>
             <div
               className="CommentButton"
               onClick={() => {
@@ -132,11 +134,6 @@ export default function PostView() {
         <div className="commentList">
           <Comments />
           <Comments />
-        </div>
-        <div className="pagenation">
-          <Stack spacing={2}>
-            <Pagination count={3} showFirstButton showLastButton />
-          </Stack>
         </div>
       </div>
     </>

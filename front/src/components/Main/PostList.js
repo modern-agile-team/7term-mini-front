@@ -5,7 +5,7 @@ import LoadMainPage from '../../features/LoadMainPage';
 import Previous from '../entrie/Previous';
 import Next from '../entrie/Next';
 
-export default function PostList(a) {
+export default function PostList() {
   const [data, setData] = React.useState([]);
   const [wholePage, setWholePage] = React.useState();
   const [page, setPage] = React.useState(1);
@@ -47,8 +47,9 @@ export default function PostList(a) {
   return (
     <>
       {data.map((item, index) => (
-        <Post {...data[index]} />
+        <Post key={data[index].no} {...item} />
       ))}
+
       <div className="pageMove">
         <div onClick={previous}>
           <Previous width="2.8vw" margin="0 30vw 0 0" />
