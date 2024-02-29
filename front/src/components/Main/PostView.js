@@ -1,21 +1,19 @@
-import {Link} from 'react-router-dom';
+import {Link, useSearchParams} from 'react-router-dom';
 import Remove from './Remove';
-import moment from 'moment';
 import Greaiting from '../entrie/Greaiting';
 import UserComment from '../entrie/UserComment';
-import Pagination from '@mui/material/Pagination';
 import * as React from 'react';
-import Stack from '@mui/material/Stack';
 import Pencil from '../entrie/Pencil';
 import Comments from './Comments';
 import {useEffect, useState} from 'react';
 
-export default function PostView() {
+export default function PostView(props) {
   const [categories, setCategories] = useState('');
-  const [viewcomments, setViewComments] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const no1 = searchParams.get('no');
 
   useEffect(() => {
-    fetch('http://15.164.231.77:3000/boards/8', {
+    fetch(`http://15.164.231.77:3000/boards/${no1}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -31,53 +29,39 @@ export default function PostView() {
       });
   }, []);
 
-  useEffect(() => {
-    fetch('http://15.164.231.77:3000/boards/2/comments', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-    })
-      .then(response => response.json())
-      .then(result => {
-        setViewComments(result.board);
-      })
-      .catch(err => {
-        alert('에러');
-      });
-  }, []);
-
   const [createComment, setCreateComment] = useState('');
   function create_comment() {
-    fetch('http://15.164.231.77:3000/boards/2/comments', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-      body: JSON.stringify({
-        content: createComment,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        console.log(result);
-        console.log(createComment);
+    if (window.confirm('댓글을 작성하시겠습니까?'))
+      fetch(`http://15.164.231.77:3000/boards/${no1}/comments`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+        body: JSON.stringify({
+          content: createComment,
+        }),
       })
-      .catch(err => {
-        alert('에러');
-      });
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          console.log(createComment);
+          window.alert('작성이 완료되었습니다');
+        })
+        .catch(err => {
+          alert('에러');
+        });
   }
   const onchangeComment = e => {
     setCreateComment(e.target.value);
   };
-
   return (
     <>
       <div className="greenBox1">
         <div className="postViewHeader">
-          #{categories.no} :: {categories.created_at}
+          <post>
+            {categories.nickname}님 :: {categories.created_at}
+          </post>
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
@@ -118,25 +102,20 @@ export default function PostView() {
               placeholder="100자 이내로 입력하시오."
               onChange={onchangeComment}
             />
-            <Pencil width="4vh"></Pencil>
-            <button
+            <div
               className="CommentButton"
               onClick={() => {
                 create_comment();
               }}
             >
-              댓글작성하기
-            </button>
+              <Pencil width="2.5vw" margin="0px 0px 10px 0px" />
+              댓글 남기기
+            </div>
           </div>
         </div>
         <div className="commentList">
+          <Comments></Comments>
           <Comments />
-          <Comments />
-        </div>
-        <div className="pagenation">
-          <Stack spacing={2}>
-            <Pagination count={3} showFirstButton showLastButton />
-          </Stack>
         </div>
       </div>
     </>
