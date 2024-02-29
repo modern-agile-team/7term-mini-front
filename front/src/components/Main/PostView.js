@@ -9,7 +9,6 @@ import {useEffect, useState} from 'react';
 
 export default function PostView(props) {
   const [categories, setCategories] = useState('');
-  const [viewComments, setViewComments] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const no1 = searchParams.get('no');
 
@@ -30,55 +29,38 @@ export default function PostView(props) {
       });
   }, []);
 
-  useEffect(props => {
-    fetch(`http://15.164.231.77:3000/boards/2/comments/1`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-    })
-      .then(response => response.json())
-      .then(result => {
-        setViewComments(result.board);
-      })
-      .catch(err => {
-        alert('에러');
-      });
-  }, []);
-
   const [createComment, setCreateComment] = useState('');
   function create_comment() {
-    fetch('http://15.164.231.77:3000/boards/2/comments', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-      body: JSON.stringify({
-        content: createComment,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        console.log(result);
-        console.log(createComment);
+    if (window.confirm('댓글을 작성하시겠습니까?'))
+      fetch(`http://15.164.231.77:3000/boards/${no1}/comments`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+        body: JSON.stringify({
+          content: createComment,
+        }),
       })
-      .catch(err => {
-        alert('에러');
-      });
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          console.log(createComment);
+          window.alert('작성이 완료되었습니다');
+        })
+        .catch(err => {
+          alert('에러');
+        });
   }
   const onchangeComment = e => {
     setCreateComment(e.target.value);
   };
-
   return (
     <>
       <div className="greenBox1">
         <div className="postViewHeader">
           <post>
-            {categories.nickname}
-            {categories.created_at}
+            {categories.nickname}님 :: {categories.created_at}
           </post>
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
@@ -120,19 +102,19 @@ export default function PostView(props) {
               placeholder="100자 이내로 입력하시오."
               onChange={onchangeComment}
             />
-            <Pencil width="2.5vw"></Pencil>
             <div
               className="CommentButton"
               onClick={() => {
                 create_comment();
               }}
             >
-              댓글작성하기
+              <Pencil width="2.5vw" margin="0px 0px 10px 0px" />
+              댓글 남기기
             </div>
           </div>
         </div>
         <div className="commentList">
-          <Comments />
+          <Comments></Comments>
           <Comments />
         </div>
       </div>

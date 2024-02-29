@@ -1,34 +1,32 @@
 import NewAccessToken from './NewAccessToken';
 
-export default function LoadMainPage(props) {
-  return new Promise((resolve, reject) => {
-    try {
-      fetch(
-        `http://15.164.231.77:3000/boards/?currentPage=${props.current}&categoryNo=${props.no}&pageSize=3`,
-        {
-          method: 'GET',
-          headers: {
-            'content-type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-          },
+export default async function LoadMainPage(props) {
+  try {
+    const response = await fetch(
+      `http://15.164.231.77:3000/boards/?currentPage=${props.current}&categoryNo=${props.no}&pageSize=3`,
+      {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
-      )
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          resolve(data);
-        })
-        .catch(error => {
-          reject(error);
-        });
-    } catch (err) {
-      if (err.response.status === 401) {
-        NewAccessToken();
+      },
+    );
+
+    if (!response.ok) {
+      if (
+        response.status === 401 &&
+        window.localStorage.getItem('refreshToken')
+      ) {
+        await NewAccessToken();
+        return LoadMainPage(props);
       }
+      throw new Error('Network response was not ok');
     }
-  });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }

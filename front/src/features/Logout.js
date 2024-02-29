@@ -1,23 +1,32 @@
 import NewAccessToken from './NewAccessToken';
 
-export default function Logout() {
+async function performLogout() {
+  return fetch(`http://15.164.231.77:3000/auth/logout`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+    },
+  });
+}
+
+export default async function Logout() {
   try {
     if (window.confirm('로그아웃 하시겠습니까?')) {
-      fetch(`http://15.164.231.77:3000/auth/logout`, {
-        method: 'DELETE',
-        headers: {
-          'content-type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      })
-        .then(response => response.json())
-        .then(response => {
-          if (response.statusCode === 401) {
-            NewAccessToken();
-          }
-          window.localStorage.clear();
-          alert(response.message);
-        });
+      const response = await performLogout();
+      const responseData = await response.json();
+
+      if (response.status === 401 && responseData.statusCode === 401) {
+        console.log('엑세스토큰재발급');
+        await NewAccessToken();
+        const retryResponse = await performLogout();
+        const retryData = await retryResponse.json();
+        window.localStorage.clear();
+        alert(retryData.message);
+      } else {
+        window.localStorage.clear();
+        alert(responseData.message);
+      }
     }
   } catch (err) {
     console.log(err);
