@@ -148,6 +148,7 @@ export default function PostView(props) {
               width="1.5vw"
               margin="0 0.5vw"
               length={categories.love_count}
+              no={categories.no}
             />
             <UserComment
               width="1.5vw"

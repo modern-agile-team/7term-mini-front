@@ -27,23 +27,24 @@ export default function Post(props) {
         </header>
         <Link to={`/detail-post?no=${no}`} className="postContent">
           {content}
-          <footer
-            style={{
-              display: 'flex',
-              justifyContent: 'right',
-              alignItems: 'center',
-              marginTop: '8vh',
-              marginRight: '1.5vw',
-            }}
-          >
-            <Greaiting width="1.5vw" margin="0 0.5vw" length={love_count} />
-            <UserComment
-              width="1.5vw"
-              margin="0 0.5vw"
-              length={comment_count}
-            />
-          </footer>
         </Link>
+        <footer
+          style={{
+            display: 'flex',
+            justifyContent: 'right',
+            alignItems: 'center',
+            marginTop: '8vh',
+            marginRight: '1.5vw',
+          }}
+        >
+          <Greaiting
+            width="1.5vw"
+            margin="0 0.5vw"
+            length={love_count}
+            no={no}
+          />
+          <UserComment width="1.5vw" margin="0 0.5vw" length={comment_count} />
+        </footer>
       </div>
     </>
   );
