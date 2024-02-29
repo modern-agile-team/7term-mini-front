@@ -9,7 +9,6 @@ import {useEffect, useState} from 'react';
 import Previous from '../entrie/Previous';
 import Next from '../entrie/Next';
 import PostCorrection from '../../features/PostCorrection';
-import {useHistory} from 'react-router-dom';
 
 export default function PostView(props) {
   const [viewComments, setViewComments] = useState('');
@@ -23,7 +22,6 @@ export default function PostView(props) {
   const onChangeContent = e => {
     setContent(e.target.value);
   };
-  const history = useHistory();
 
   function previous() {
     if (page > 1) {
@@ -98,7 +96,6 @@ export default function PostView(props) {
         .then(response => response.json())
         .then(result => {
           window.alert('작성이 완료되었습니다');
-          history.go(0);
         })
         .catch(err => {
           alert('에러');

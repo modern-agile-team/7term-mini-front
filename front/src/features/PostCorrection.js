@@ -1,8 +1,4 @@
-import {useHistory} from 'react-router-dom';
-
 export default function PostCorrection(no, category, content) {
-  const history = useHistory();
-
   fetch(`http://15.164.231.77:3000/boards/${no}`, {
     method: 'PUT',
     headers: {
@@ -18,7 +14,6 @@ export default function PostCorrection(no, category, content) {
     .then(result => {
       if (result.statusCode === 200) {
         alert(result.message);
-        history.go(0);
       }
     })
     .catch(err => {
