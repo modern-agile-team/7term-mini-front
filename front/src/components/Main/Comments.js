@@ -1,49 +1,7 @@
 import BeeLogo from '../entrie/BeeLogo';
 import styled from '@emotion/styled';
-import {useSearchParams} from 'react-router-dom';
-import {useState, useEffect} from 'react';
 
-export default function Comments() {
-  const [viewComments, setViewComments] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [wholePage, setWholePage] = useState();
-  const [page, setPage] = useState(1);
-  const no1 = searchParams.get('no');
-
-  useEffect(props => {
-    fetch(`http://15.164.231.77:3000/boards/${no1}/comments/2`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-      body: JSON.stringify({}),
-    })
-      .then(response => response.json())
-      .then(result => {
-        setViewComments(result.comments);
-      })
-      .catch(err => {
-        alert('에러');
-      });
-  }, []);
-
-  function previous() {
-    if (page > 0) {
-      setPage(page => page - 1);
-    } else {
-      alert('첫 번째 페이지입니다.');
-    }
-  }
-
-  function next() {
-    if (page < wholePage) {
-      setPage(page => page + 1);
-    } else {
-      alert('마지막 페이지입니다.');
-    }
-  }
-
+export default function Comments(props) {
   const Content = styled.div`
     width: 50vw;
     height: 3vh;
@@ -85,8 +43,9 @@ export default function Comments() {
       >
         <UserName>
           <BeeLogo width="2.5vw" margin="0px 0px 10px 0px" />
+          {props.nickname}
         </UserName>
-        <Content></Content>
+        <Content>{props.content}</Content>
       </div>
     </>
   );

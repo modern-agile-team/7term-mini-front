@@ -13,7 +13,6 @@ export default function NewAccessToken() {
       if (result.accessToken) {
         localStorage.setItem('accessToken', result.accessToken);
       }
-      window.location.reload();
     })
     .catch(err => {
       console.log(err);

@@ -14,12 +14,8 @@ export default async function LoadMainPage(props) {
     );
 
     if (!response.ok) {
-      if (
-        response.status === 401 &&
-        window.localStorage.getItem('refreshToken')
-      ) {
+      if (response.status === 401) {
         await NewAccessToken();
-        return LoadMainPage(props);
       }
       throw new Error('Network response was not ok');
     }

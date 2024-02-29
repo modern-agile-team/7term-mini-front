@@ -266,9 +266,33 @@ label {
 
 .pageMove {
   display: flex;
+  justify-content: center;
 }
 
 /*글 조회 (PostView) 페이지 CSS*/
+
+#postCorrect {
+  text-align: center;
+  padding: 3vh 0vh;
+  margin-left: 2vw;
+  height: 9vh;
+  font-size: 95%;
+  width: 62vw;
+  background-color: #f3f8f1;
+  border-radius: 20px;
+  border: none;
+  resize: none;
+  outline: none;
+}
+
+.postViewBody {
+  display: flex;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw 2.5vw 1.5vw 1.9vw;
+  font-size: 95%;
+}
 
 .community {
   display: flex;
@@ -280,7 +304,7 @@ label {
   justify-content: space-between;
   padding: 1.5vw 1vw 0vw 1.9vw;
   font-family: 'Cafe24SsurroundAir';
-  font-size: 100%;
+  font-size: 85%;
 }
 
 .greenBox1 {
@@ -288,14 +312,6 @@ label {
   height: 81vh;
   background-color: #b5d3a7;
   border-radius: 30px;
-}
-
-.postViewBody {
-  display: flex;
-  justify-content: center;
-  padding: 1vw 2.5vw 1.5vw 1.9vw;
-  font-family: 'Cafe24SsurroundAir';
-  font-size: 90%;
 }
 
 .postViewFooter {
