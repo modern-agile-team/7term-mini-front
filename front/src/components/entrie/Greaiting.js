@@ -1,11 +1,19 @@
 import logo from '../../assets/greate.png';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 
 export default function Greaiting(props) {
-  const [loveCount, setLoveCount] = useState(0);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [loveCount, setLoveCount] = useState(false);
+  const [searchParams] = useSearchParams();
   const no = searchParams.get('no');
+
+  useEffect(() => {
+    if (loveCount) {
+      del_love();
+    } else {
+      post_love();
+    }
+  }, [loveCount]);
 
   function post_love() {
     fetch(`http://15.164.231.77:3000/boards/${no}/love`, {
@@ -16,13 +24,9 @@ export default function Greaiting(props) {
       },
     })
       .then(response => response.json())
-      .then(result => {
-        if (result.statuscode === 201) {
-          setLoveCount(1);
-        }
-      })
+      .then(result => {})
       .catch(err => {
-        alert('에러');
+        alert(err);
       });
   }
 
@@ -33,11 +37,7 @@ export default function Greaiting(props) {
         'content-type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
-    })
-      .then(response => response.json())
-      .then(result => {
-        setLoveCount(result);
-      });
+    });
   }
 
   return (
@@ -49,7 +49,9 @@ export default function Greaiting(props) {
         }}
         src={logo}
         alt="좋아요"
-        onClick={loveCount ? del_love : post_love}
+        onClick={() => {
+          setLoveCount(!loveCount);
+        }}
       />
       <span>{props.length}</span>
     </>
