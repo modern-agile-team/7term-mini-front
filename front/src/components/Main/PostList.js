@@ -30,10 +30,8 @@ export default function PostList() {
   }, [page, category]);
 
   function previous() {
-    if (page > 0) {
+    if (page > 1) {
       setPage(page => page - 1);
-    } else {
-      alert('첫 번째 페이지입니다.');
     }
   }
 
@@ -61,7 +59,7 @@ export default function PostList() {
                 marginTop: '1.8vh',
               }}
             >
-              {page}
+              {page === 0 ? 1 : page}
             </span>
             <div onClick={next}>
               <Next width="2.8vw" margin="0 0 0 30vw" />

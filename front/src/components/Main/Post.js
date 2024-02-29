@@ -3,7 +3,6 @@ import Greaiting from '../entrie/Greaiting';
 import UserComment from '../entrie/UserComment';
 import Remove from './Remove';
 import {Link} from 'react-router-dom';
-import {useSearchParams, useParams} from 'react-router-dom';
 
 export default function Post(props) {
   const {content, love_count, comment_count, no} = props;

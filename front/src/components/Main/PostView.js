@@ -6,12 +6,65 @@ import * as React from 'react';
 import Pencil from '../entrie/Pencil';
 import Comments from './Comments';
 import {useEffect, useState} from 'react';
+import Previous from '../entrie/Previous';
+import Next from '../entrie/Next';
+import PostCorrection from '../../features/PostCorrection';
+import {useHistory} from 'react-router-dom';
 
 export default function PostView(props) {
+  const [viewComments, setViewComments] = useState('');
   const [categories, setCategories] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const [wholePage, setWholePage] = useState();
+  const [page, setPage] = useState(1);
   const no1 = searchParams.get('no');
+  const [correction, setCorrection] = useState(0);
+  const [content, setContent] = useState(categories.content);
+  const onChangeContent = e => {
+    setContent(e.target.value);
+  };
+  const history = useHistory();
 
+  function previous() {
+    if (page > 1) {
+      setPage(page => page - 1);
+    }
+  }
+
+  function next() {
+    if (page < wholePage) {
+      setPage(page => page + 1);
+    } else {
+      alert('마지막 페이지입니다.');
+    }
+  }
+
+  //댓글조회
+  useEffect(
+    props => {
+      fetch(
+        `http://15.164.231.77:3000/boards/${no1}/comments/${page ? page : 1}`,
+        {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          },
+        },
+      )
+        .then(response => response.json())
+        .then(result => {
+          setViewComments(result);
+          setWholePage(result.allCommentPages);
+        })
+        .catch(err => {
+          alert('에러');
+        });
+    },
+    [no1, page],
+  );
+
+  //글조회
   useEffect(() => {
     fetch(`http://15.164.231.77:3000/boards/${no1}`, {
       method: 'GET',
@@ -27,7 +80,7 @@ export default function PostView(props) {
       .catch(err => {
         alert('에러');
       });
-  }, []);
+  }, [no1]);
 
   const [createComment, setCreateComment] = useState('');
   function create_comment() {
@@ -44,38 +97,66 @@ export default function PostView(props) {
       })
         .then(response => response.json())
         .then(result => {
-          console.log(result);
-          console.log(createComment);
           window.alert('작성이 완료되었습니다');
+          history.go(0);
         })
         .catch(err => {
           alert('에러');
         });
   }
+
   const onchangeComment = e => {
     setCreateComment(e.target.value);
   };
   return (
-    <>
+    <div>
       <div className="greenBox1">
         <div className="postViewHeader">
-          <post>
-            {categories.nickname}님 :: {categories.created_at}
-          </post>
+          {categories.nickname}님 :: {categories.created_at}
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>
-        <div className="postViewBody">{categories.content}</div>
+        {correction ? (
+          <textarea id="postCorrect" onChange={onChangeContent}>
+            {categories.content}
+          </textarea>
+        ) : (
+          <div className="postViewBody">{categories.content}</div>
+        )}
+
         <div className="postViewFooter">
-          <span>· 수정하기</span>
+          <div
+            style={{
+              color: '#5c70de',
+              fontSize: '85%',
+            }}
+            onClick={() => {
+              if (correction) {
+                setCorrection(0);
+                PostCorrection(no1, categories.category_no, content);
+              } else {
+                setCorrection(1);
+              }
+            }}
+          >
+            {localStorage.getItem('name') === categories.nickname
+              ? correction === 0
+                ? '· 수정하기'
+                : '· 완료'
+              : null}
+          </div>
           <div className="community">
             <Greaiting
               width="1.5vw"
               margin="0 0.5vw"
               length={categories.love_count}
             />
-            <UserComment width="1.5vw" margin="0 0.5vw" />
+            <UserComment
+              width="1.5vw"
+              margin="0 0.5vw"
+              length={viewComments.commentCount}
+            />
           </div>
         </div>
         <hr
@@ -86,7 +167,7 @@ export default function PostView(props) {
             textAlign: 'center',
             margin: '0px auto',
           }}
-        ></hr>
+        />
         <div
           style={{
             display: 'flex',
@@ -114,10 +195,27 @@ export default function PostView(props) {
           </div>
         </div>
         <div className="commentList">
-          <Comments></Comments>
-          <Comments />
+          {viewComments.comments &&
+            viewComments.comments.map((item, index) => (
+              <Comments key={index} {...viewComments.comments[index]} />
+            ))}
+        </div>
+        <div className="pageMove">
+          <div onClick={previous}>
+            <Previous width="2.8vw" margin="0 28vw 0 0" />
+          </div>
+          <span
+            style={{
+              marginTop: '1.8vh',
+            }}
+          >
+            {page === 0 ? 1 : page}
+          </span>
+          <div onClick={next}>
+            <Next width="2.8vw" margin="0 0 0 28vw" />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

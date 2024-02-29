@@ -60,7 +60,6 @@ export default function NewPost() {
       console.log(err);
       if (err.response && err.response.status === 401) {
         await NewAccessToken();
-        window.location.reload();
       }
     }
   }
