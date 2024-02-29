@@ -39,9 +39,16 @@ export default function Board() {
         <section className="infoSection">
           <ButtonBox>{nickName ? nickName : '@@'}님 반갑습니다!</ButtonBox>
           <div className="buttonSection">
-            <Link to="/" onClick={Logout} className="logoutButton">
-              로그아웃
-            </Link>
+            {nickName ? (
+              <Link to="/" onClick={Logout} className="logoutButton">
+                로그아웃
+              </Link>
+            ) : (
+              <Link to="/login" className="logoutButton">
+                로그인
+              </Link>
+            )}
+
             <Link to="/new-post" className="newPostButton">
               글쓰기
             </Link>

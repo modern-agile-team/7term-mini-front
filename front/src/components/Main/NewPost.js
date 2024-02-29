@@ -21,36 +21,47 @@ export default function NewPost() {
     });
   };
 
-  function postSend() {
-    if (body.content.length !== 0) {
-      if (window.confirm('작성하시겠습니까?')) {
-        fetch('http://15.164.231.77:3000/boards/', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-          },
-          body: JSON.stringify({
-            categoryNo: body.category,
-            content: body.content,
-          }),
-        })
-          .then(response => response.json())
-          .then(response => {
-            alert(response.message);
-            if (response.statusCode === 201) {
-              navigate(`/NORANG`);
+  async function performPost() {
+    return fetch('http://15.164.231.77:3000/boards/', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+      body: JSON.stringify({
+        categoryNo: body.category,
+        content: body.content,
+      }),
+    });
+  }
+
+  async function postSend() {
+    try {
+      if (body.content.length !== 0) {
+        if (window.confirm('작성하시겠습니까?')) {
+          const response = await performPost(body);
+          const responseData = await response.json();
+
+          alert(responseData.message);
+          if (response.status === 201) {
+            navigate(`/NORANG`);
+          } else if (!response.ok) {
+            if (response.status === 401) {
+              await NewAccessToken();
+              return performPost(body);
             }
-          })
-          .catch(err => {
-            if (err.response.statusCode === 401) {
-              NewAccessToken();
-              window.location.reload();
-            }
-          });
+            throw new Error('Network response was not ok');
+          }
+        } else {
+          alert('내용을 입력해주세요!');
+        }
       }
-    } else {
-      alert('내용을 입력해주세요!');
+    } catch (err) {
+      console.log(err);
+      if (err.response && err.response.status === 401) {
+        await NewAccessToken();
+        window.location.reload();
+      }
     }
   }
 
