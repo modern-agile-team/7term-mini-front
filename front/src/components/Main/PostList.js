@@ -4,6 +4,7 @@ import Post from './Post';
 import LoadMainPage from '../../features/LoadMainPage';
 import Previous from '../entrie/Previous';
 import Next from '../entrie/Next';
+import {Link} from 'react-router-dom';
 
 export default function PostList(a) {
   const [data, setData] = React.useState([]);
@@ -46,24 +47,45 @@ export default function PostList(a) {
 
   return (
     <>
-      {data.map((item, index) => (
-        <Post {...data[index]} />
-      ))}
-      <div className="pageMove">
-        <div onClick={previous}>
-          <Previous width="2.8vw" margin="0 30vw 0 0" />
-        </div>
-        <span
-          style={{
-            marginTop: '1.8vh',
-          }}
-        >
-          {page}
-        </span>
-        <div onClick={next}>
-          <Next width="2.8vw" margin="0 0 0 30vw" />
-        </div>
-      </div>
+      {localStorage.getItem('accessToken') ? (
+        <>
+          {data.map((item, index) => (
+            <Post {...data[index]} />
+          ))}
+          <div className="pageMove">
+            <div onClick={previous}>
+              <Previous width="2.8vw" margin="0 30vw 0 0" />
+            </div>
+            <span
+              style={{
+                marginTop: '1.8vh',
+              }}
+            >
+              {page}
+            </span>
+            <div onClick={next}>
+              <Next width="2.8vw" margin="0 0 0 30vw" />
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <Link
+            to="/"
+            style={{
+              color: '#5C70DE',
+              margin: '35vh 0vw',
+              textAlign: 'center',
+              fontSize: '4vh',
+            }}
+          >
+            로그인 후에 이용 가능합니다.
+            <br />
+            <br />
+            클릭 시 처음 페이지로 돌아갑니다.
+          </Link>
+        </>
+      )}
     </>
   );
 }

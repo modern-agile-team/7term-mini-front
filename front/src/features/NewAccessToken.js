@@ -7,7 +7,6 @@ export default function NewAccessToken() {
     },
   })
     .then(response => {
-      console.log('액세스토큰 재발행');
       return response.json();
     })
     .then(result => {
