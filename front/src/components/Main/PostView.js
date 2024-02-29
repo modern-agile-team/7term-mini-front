@@ -44,8 +44,6 @@ export default function PostView(props) {
       })
         .then(response => response.json())
         .then(result => {
-          console.log(result);
-          console.log(createComment);
           window.alert('작성이 완료되었습니다');
         })
         .catch(err => {
