@@ -11,12 +11,13 @@ export default function Comments() {
   const no1 = searchParams.get('no');
 
   useEffect(props => {
-    fetch(`http://15.164.231.77:3000/boards/${no1}/comments/1`, {
+    fetch(`http://15.164.231.77:3000/boards/${no1}/comments/2`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
+      body: JSON.stringify({}),
     })
       .then(response => response.json())
       .then(result => {
@@ -84,9 +85,8 @@ export default function Comments() {
       >
         <UserName>
           <BeeLogo width="2.5vw" margin="0px 0px 10px 0px" />
-          {viewComments.nickname}
         </UserName>
-        <Content>{viewComments.content}</Content>
+        <Content></Content>
       </div>
     </>
   );
