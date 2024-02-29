@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 
 export default function Post(props) {
   const {content, love_count, comment_count, no} = props;
+
   return (
     <>
       <div className="post">
