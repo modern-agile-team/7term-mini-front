@@ -294,11 +294,6 @@ label {
   font-size: 95%;
 }
 
-.community {
-  display: flex;
-  justify-content: center;
-}
-
 .postViewHeader {
   display: flex;
   justify-content: space-between;

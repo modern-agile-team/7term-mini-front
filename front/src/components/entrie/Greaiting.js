@@ -3,41 +3,74 @@ import {useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 
 export default function Greaiting(props) {
-  const [loveCount, setLoveCount] = useState(false);
-  const [searchParams] = useSearchParams();
-  const no = searchParams.get('no');
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [loveCount, setLoveCount] = useState();
+  const [result, setResult] = useState();
   useEffect(() => {
-    if (loveCount) {
-      del_love();
-    } else {
-      post_love();
-    }
-  }, [loveCount]);
-
-  function post_love() {
-    fetch(`http://15.164.231.77:3000/boards/${no}/love`, {
-      method: 'POST',
+    fetch(`http://15.164.231.77:3000/boards/${no1}`, {
+      method: 'GET',
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
     })
       .then(response => response.json())
-      .then(result => {})
-      .catch(err => {
-        alert(err);
+      .then(result => {
+        setLoveCount(result.board.love_count);
+        setResult(result);
       });
-  }
+    // .catch(err => {
+    //   alert('err');
+    // });
+  }, [result]);
 
-  function del_love() {
-    fetch(`http://15.164.231.77:3000/boards/${no}/love`, {
-      method: 'DELETE',
+  const no1 = searchParams.get('no');
+
+  function get_love_mark() {
+    fetch(`http://15.164.231.77:3000/boards/${no1}`, {
+      method: 'GET',
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
-    });
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (!result.userLoveMark) {
+          fetch(`http://15.164.231.77:3000/boards/${no1}/love`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+          })
+            .then(response => response.json())
+            .then(result => {
+              console.log(result);
+              console.log('좋아요');
+            })
+            .catch(err => {
+              alert(err);
+            });
+        } else {
+          fetch(`http://15.164.231.77:3000/boards/${no1}/love`, {
+            method: 'DELETE',
+            headers: {
+              'content-type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+          })
+            .then(result => {
+              if (result) console.log('좋아요 취소');
+            })
+            .catch(err => {
+              alert(err);
+            });
+        }
+      })
+      .catch(err => {
+        alert(err);
+      });
   }
 
   return (
@@ -50,10 +83,10 @@ export default function Greaiting(props) {
         src={logo}
         alt="좋아요"
         onClick={() => {
-          setLoveCount(!loveCount);
+          get_love_mark();
         }}
       />
-      <span>{props.length}</span>
+      <span>{props.loveCount}</span>
     </>
   );
 }
