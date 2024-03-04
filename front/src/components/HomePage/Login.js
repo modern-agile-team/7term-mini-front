@@ -27,6 +27,10 @@ export default function Login() {
             localStorage.setItem('refreshToken', result.refreshToken);
             navigate(`/NORANG`);
             window.localStorage.setItem('name', result.userNickName);
+          } else if (!getauthId) {
+            alert('아이디를 입력해주세요');
+          } else if (!getauthPw) {
+            alert('비밀번호를 입력해주세요');
           }
         })
         .catch(err => {

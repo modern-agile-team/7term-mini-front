@@ -1,15 +1,14 @@
 import BeeLogo from '../entrie/BeeLogo';
 import styled from '@emotion/styled';
-import {useEffect} from 'react';
-import {useSearchParams} from 'react-router-dom';
+
+import Remove from './Remove';
+import CommentDel from '../../features/CommentDel';
 
 export default function Comments(props) {
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const Content = styled.div`
-    width: 50vw;
+    width: 49vw;
     height: 3vh;
-    margin-right: 2vw;
+    margin-right: 1vw;
     padding: 20px;
     margin-left: 1vw;
     background-color: #f3f8f1;
@@ -50,7 +49,13 @@ export default function Comments(props) {
           {props.nickname}
         </UserName>
         <Content>{props.content}</Content>
-        <div>댓삭</div>
+        <div
+          onClick={() => {
+            CommentDel(props.board_no, props.no);
+          }}
+        >
+          <Remove width="1.5vw" margin="0 0.3vw 5vh 0" />
+        </div>
       </div>
     </>
   );

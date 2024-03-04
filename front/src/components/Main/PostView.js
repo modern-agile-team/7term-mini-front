@@ -96,6 +96,7 @@ export default function PostView(props) {
         .then(response => response.json())
         .then(result => {
           window.alert('작성이 완료되었습니다');
+          window.location.reload();
         })
         .catch(err => {
           alert('에러');
@@ -109,7 +110,7 @@ export default function PostView(props) {
     <div>
       <div className="greenBox1">
         <div className="postViewHeader">
-          {categories.nickname}님 :: {categories.created_at}
+          {categories.nickname} :: {categories.created_at}
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
@@ -148,6 +149,7 @@ export default function PostView(props) {
               width="1.5vw"
               margin="0 0.5vw"
               length={categories.love_count}
+              no={categories.no}
             />
             <UserComment
               width="1.5vw"
@@ -179,6 +181,7 @@ export default function PostView(props) {
               className="inputComment"
               placeholder="100자 이내로 입력하시오."
               onChange={onchangeComment}
+              maxlength="100"
             />
             <div
               className="CommentButton"
