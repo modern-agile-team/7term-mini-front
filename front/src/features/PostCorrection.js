@@ -13,11 +13,10 @@ export default function PostCorrection(no, category, content) {
     .then(response => response.json())
     .then(result => {
       if (result.statusCode === 200) {
-        alert(result.message);
+        window.location.reload();
       }
     })
     .catch(err => {
       console.log(err);
     });
-  window.location.reload();
 }
