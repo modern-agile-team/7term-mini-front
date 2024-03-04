@@ -19,4 +19,5 @@ export default function PostCorrection(no, category, content) {
     .catch(err => {
       console.log(err);
     });
+  window.location.reload();
 }
