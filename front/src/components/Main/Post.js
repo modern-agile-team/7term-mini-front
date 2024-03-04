@@ -40,8 +40,8 @@ export default function Post(props) {
           <Greaiting
             width="1.5vw"
             margin="0 0.5vw"
-            length={love_count}
             no={no}
+            length={love_count}
           />
           <UserComment width="1.5vw" margin="0 0.5vw" length={comment_count} />
         </footer>

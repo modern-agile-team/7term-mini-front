@@ -96,6 +96,7 @@ export default function PostView(props) {
         .then(response => response.json())
         .then(result => {
           window.alert('작성이 완료되었습니다');
+          window.location.reload();
         })
         .catch(err => {
           alert('에러');
@@ -109,7 +110,7 @@ export default function PostView(props) {
     <div>
       <div className="greenBox1">
         <div className="postViewHeader">
-          {categories.nickname}님 :: {categories.created_at}
+          {categories.nickname} :: {categories.created_at}
           <Link to="/norang">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
@@ -132,6 +133,7 @@ export default function PostView(props) {
               if (correction) {
                 setCorrection(0);
                 PostCorrection(no1, categories.category_no, content);
+                window.location.reload();
               } else {
                 setCorrection(1);
               }
