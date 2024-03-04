@@ -46,7 +46,6 @@ export default function Greaiting(props) {
           })
             .then(response => response.json())
             .then(result => {
-              console.log(result);
               console.log('좋아요');
             })
             .catch(err => {
@@ -86,7 +85,7 @@ export default function Greaiting(props) {
           get_love_mark();
         }}
       />
-      <span>{props.loveCount}</span>
+      <span>{loveCount}</span>
     </>
   );
 }

@@ -1,7 +1,11 @@
 import BeeLogo from '../entrie/BeeLogo';
 import styled from '@emotion/styled';
+import {useEffect} from 'react';
+import {useSearchParams} from 'react-router-dom';
 
 export default function Comments(props) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const Content = styled.div`
     width: 50vw;
     height: 3vh;
@@ -46,6 +50,7 @@ export default function Comments(props) {
           {props.nickname}
         </UserName>
         <Content>{props.content}</Content>
+        <div>댓삭</div>
       </div>
     </>
   );
