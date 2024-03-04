@@ -133,7 +133,6 @@ export default function PostView(props) {
               if (correction) {
                 setCorrection(0);
                 PostCorrection(no1, categories.category_no, content);
-                window.location.reload();
               } else {
                 setCorrection(1);
               }
