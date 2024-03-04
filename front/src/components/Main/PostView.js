@@ -181,6 +181,7 @@ export default function PostView(props) {
               className="inputComment"
               placeholder="100자 이내로 입력하시오."
               onChange={onchangeComment}
+              maxlength="100"
             />
             <div
               className="CommentButton"
