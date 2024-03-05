@@ -260,7 +260,7 @@ label {
   font-size: 85%;
 }
 
-.post:hover {
+.postContent:hover {
   font-weight: bolder;
 }
 
@@ -360,4 +360,9 @@ label {
   justify-content: flex-start;
   align-items: center;
   margin-top: 1vh;
+}
+
+.community {
+  display: flex;
+  align-items: center;
 }

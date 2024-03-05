@@ -5,7 +5,7 @@ import Remove from './Remove';
 import {Link} from 'react-router-dom';
 
 export default function Post(props) {
-  const {content, love_count, comment_count, no} = props;
+  const {content, love_count, comment_count, no, created_at, nickname} = props;
 
   return (
     <>
@@ -14,9 +14,20 @@ export default function Post(props) {
           style={{
             display: 'flex',
             justifyContent: 'right',
+            alignItems: 'center',
             margin: '1vw 1vw 0vw 1vw',
           }}
         >
+          <span
+            style={{
+              fontSize: '70%',
+              fontFamily: 'Cafe24SsurroundAir',
+              marginRight: '1vw',
+              marginBottom: '0.5vh',
+            }}
+          >
+            {nickname + ' :: ' + created_at}
+          </span>
           <Link
             onClick={() => {
               PostDel(no);
