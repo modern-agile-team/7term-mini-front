@@ -12,6 +12,7 @@ export default function PostList() {
   const [page, setPage] = React.useState(1);
   const [searchParams] = useSearchParams();
   const [category, setCategory] = React.useState(0);
+  const [love, setLove] = React.useState();
 
   React.useEffect(() => {
     setCategory(searchParams.get('category'));

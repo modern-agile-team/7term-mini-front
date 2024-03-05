@@ -1,4 +1,5 @@
-import logo from '../../assets/greate.png';
+import logo1 from '../../assets/greate.png';
+import logo2 from '../../assets/greate_on.png';
 
 export default function Greaiting(props) {
   function get_love_mark() {
@@ -37,6 +38,7 @@ export default function Greaiting(props) {
           })
             .then(result => {
               if (result) console.log('좋아요 취소');
+
               window.location.reload();
             })
             .catch(err => {
@@ -56,7 +58,7 @@ export default function Greaiting(props) {
           width: props.width,
           margin: props.margin,
         }}
-        src={logo}
+        src={props.love ? logo2 : logo1}
         alt="좋아요"
         onClick={() => {
           get_love_mark();
