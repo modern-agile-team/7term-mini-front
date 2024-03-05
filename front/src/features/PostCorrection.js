@@ -1,5 +1,5 @@
 export default function PostCorrection(no, category, content) {
-  fetch(`http://15.164.231.77:3000/boards/${no}`, {
+  fetch(process.env.REACT_APP_FETCH_CORRECTION_POST, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',

@@ -8,7 +8,7 @@ export default function SignIn() {
   const navigate = useNavigate();
   function sign_in() {
     if (validNick && validId && validPw && validEmail) {
-      fetch('http://15.164.231.77:3000/users/sign-up', {
+      fetch(process.env.REACT_APP_FETCH_SIGNUP, {
         method: 'POST',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify({

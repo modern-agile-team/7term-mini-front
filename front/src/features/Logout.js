@@ -1,7 +1,7 @@
 import NewAccessToken from './NewAccessToken';
 
 async function performLogout() {
-  return fetch(`http://15.164.231.77:3000/auth/logout`, {
+  return fetch(process.env.REACT_APP_LOGOUT, {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',

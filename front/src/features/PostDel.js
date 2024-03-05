@@ -1,7 +1,7 @@
 import NewAccessToken from './NewAccessToken';
 
 async function performDelete(props) {
-  return fetch(`http://15.164.231.77:3000/boards/${props}`, {
+  return fetch(process.env.REACT_APP_FETCH_POST + props, {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',

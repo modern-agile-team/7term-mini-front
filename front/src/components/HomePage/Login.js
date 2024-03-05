@@ -12,7 +12,7 @@ export default function Login() {
 
   function login() {
     if (getauthId.length < 16 && getauthPw.length < 16) {
-      fetch('http://15.164.231.77:3000/auth/login', {
+      fetch(process.env.REACT_APP_FETCH_LOGIN, {
         method: 'POST',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify({
@@ -27,6 +27,14 @@ export default function Login() {
             localStorage.setItem('refreshToken', result.refreshToken);
             navigate(`/NORANG`);
             window.localStorage.setItem('name', result.userNickName);
+          } else if (!getauthId) {
+            alert('아이디를 입력해주세요');
+          } else if (!getauthPw) {
+            alert('비밀번호를 입력해주세요');
+          } else if (result.message === '아이디가 틀렸습니다.') {
+            alert('존재하지 않는 아이디입니다.');
+          } else if (result.message === '패스워드가 틀렸습니다.') {
+            alert('틀린 비밀번호입니다.');
           }
         })
         .catch(err => {

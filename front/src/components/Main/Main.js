@@ -7,6 +7,7 @@ import PostView from './PostView';
 import NewPost from './NewPost';
 
 export default function Main(props) {
+  console.log(process.env.REACT_APP_FETCH_POST_DEL);
   return (
     <>
       <div className="body">
