@@ -2,7 +2,7 @@ import logo from '../../assets/greate.png';
 
 export default function Greaiting(props) {
   function get_love_mark() {
-    fetch(`http://15.164.231.77:3000/boards/${props.no}`, {
+    fetch(process.env.REACT_APP_FETCH_POST + props.no, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -12,13 +12,18 @@ export default function Greaiting(props) {
       .then(response => response.json())
       .then(result => {
         if (!result.userLoveMark) {
-          fetch(`http://15.164.231.77:3000/boards/${props.no}/love`, {
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          fetch(
+            process.env.REACT_APP_FETCH_POST +
+              props.no +
+              process.env.REACT_APP_LOVE,
+            {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              },
             },
-          })
+          )
             .then(response => response.json())
             .then(result => {
               console.log('좋아요');
@@ -28,13 +33,18 @@ export default function Greaiting(props) {
               alert(err);
             });
         } else {
-          fetch(`http://15.164.231.77:3000/boards/${props.no}/love`, {
-            method: 'DELETE',
-            headers: {
-              'content-type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          fetch(
+            process.env.REACT_APP_FETCH_POST +
+              props.no +
+              process.env.REACT_APP_LOVE,
+            {
+              method: 'DELETE',
+              headers: {
+                'content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              },
             },
-          })
+          )
             .then(result => {
               if (result) console.log('좋아요 취소');
               window.location.reload();

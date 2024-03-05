@@ -1,11 +1,16 @@
 export default function NewAccessToken() {
-  return fetch(`http://15.164.231.77:3000/auth/new-access-token`, {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('refreshToken')}`,
+  return fetch(
+    process.env.REACT_APP_FETCH_POST +
+      process.env.REACT_APP_AUTH +
+      process.env.REACT_APP_NEW_TOKEN,
+    {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('refreshToken')}`,
+      },
     },
-  })
+  )
     .then(response => {
       return response.json();
     })

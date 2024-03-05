@@ -36,12 +36,18 @@ export default function PostView(props) {
       alert('마지막 페이지입니다.');
     }
   }
-
+  // process.env.REACT_APP_FETCH_POST +
+  // no1 +
+  // process.env.REACT_APP +
+  // (page ? page : 1)
   //댓글조회
   useEffect(
     props => {
       fetch(
-        `http://15.164.231.77:3000/boards/${no1}/comments/${page ? page : 1}`,
+        process.env.REACT_APP_FETCH_POST +
+          no1 +
+          process.env.REACT_APP_COMMENTS +
+          (page ? page : 1),
         {
           method: 'GET',
           headers: {
@@ -64,7 +70,7 @@ export default function PostView(props) {
 
   //글조회
   useEffect(() => {
-    fetch(`http://15.164.231.77:3000/boards/${no1}`, {
+    fetch(process.env.REACT_APP_FETCH_POST + no1, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -82,17 +88,22 @@ export default function PostView(props) {
 
   const [createComment, setCreateComment] = useState('');
   function create_comment() {
-    if (window.confirm('댓글을 작성하시겠습니까?'))
-      fetch(`http://15.164.231.77:3000/boards/${no1}/comments`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+    if (!createComment) {
+      alert('댓글을 입력해주세요');
+    } else if (window.confirm('댓글을 작성하시겠습니까?')) {
+      fetch(
+        process.env.REACT_APP_FETCH_POST + no1 + process.env.REACT_APP_COMMENTS,
+        {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          },
+          body: JSON.stringify({
+            content: createComment,
+          }),
         },
-        body: JSON.stringify({
-          content: createComment,
-        }),
-      })
+      )
         .then(response => response.json())
         .then(result => {
           window.alert('작성이 완료되었습니다');
@@ -101,8 +112,8 @@ export default function PostView(props) {
         .catch(err => {
           alert('에러');
         });
+    }
   }
-
   const onchangeComment = e => {
     setCreateComment(e.target.value);
   };
@@ -182,6 +193,7 @@ export default function PostView(props) {
               placeholder="100자 이내로 입력하시오."
               onChange={onchangeComment}
               maxlength="100"
+              width="100%"
             />
             <div
               className="CommentButton"

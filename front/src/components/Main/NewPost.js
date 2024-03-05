@@ -22,7 +22,7 @@ export default function NewPost() {
   };
 
   async function performPost() {
-    return fetch('http://15.164.231.77:3000/boards/', {
+    return fetch(process.env.REACT_APP_FETCH_POST, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

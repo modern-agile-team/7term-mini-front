@@ -10,6 +10,7 @@ export default function Comments(props) {
     height: 3vh;
     margin-right: 1vw;
     padding: 20px;
+    word-break: break-all;
     margin-left: 1vw;
     background-color: #f3f8f1;
     border-radius: 20px;
