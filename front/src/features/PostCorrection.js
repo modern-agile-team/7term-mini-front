@@ -1,5 +1,5 @@
 export default function PostCorrection(no, category, content) {
-  fetch(process.env.REACT_APP_FETCH_CORRECTION_POST, {
+  fetch(process.env.REACT_APP_FETCH_POST + no, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
@@ -17,6 +17,6 @@ export default function PostCorrection(no, category, content) {
       }
     })
     .catch(err => {
-      console.log(err);
+      //console.log(err);
     });
 }
