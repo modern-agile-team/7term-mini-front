@@ -9,7 +9,6 @@ import {useEffect, useState} from 'react';
 import Previous from '../entrie/Previous';
 import Next from '../entrie/Next';
 import PostCorrection from '../../features/PostCorrection';
-import {useNavigate} from 'react-router-dom';
 
 export default function PostView(props) {
   const [viewComments, setViewComments] = useState('');
@@ -21,7 +20,6 @@ export default function PostView(props) {
   const [correction, setCorrection] = useState(0);
   const [content, setContent] = useState(categories.content);
   const [love, setLove] = useState();
-  const navigate = useNavigate();
   const onChangeContent = e => {
     setContent(e.target.value);
   };
@@ -122,7 +120,7 @@ export default function PostView(props) {
       <div className="greenBox1">
         <div className="postViewHeader">
           {categories.nickname} :: {categories.created_at}
-          <Link to="/NORANG?page=">
+          <Link to="/NORANG">
             <Remove width="2vw" margin="0px 10px" />
           </Link>
         </div>

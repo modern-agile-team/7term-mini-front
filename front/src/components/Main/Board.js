@@ -25,7 +25,7 @@ export default function Board() {
     align-items: center;
     border: solid 0.7px #e5e4de;
     &:hover {
-      background: #a5acb0;
+      background: #b5d3a7;
       transition: 0.5s;
     }
   `;
@@ -40,7 +40,7 @@ export default function Board() {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 1.5px #000000;
+    border: solid 1.8px #b5d3a7;
   `;
 
   return (
