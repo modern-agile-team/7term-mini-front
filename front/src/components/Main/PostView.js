@@ -39,11 +39,7 @@ export default function PostView(props) {
       alert('마지막 페이지입니다.');
     }
   }
-  // process.env.REACT_APP_FETCH_POST +
-  // no1 +
-  // process.env.REACT_APP +
-  // (page ? page : 1)
-  //댓글조회
+
   useEffect(
     props => {
       fetch(
@@ -160,7 +156,6 @@ export default function PostView(props) {
               : null}
           </div>
           <div className="community">
-            {console.log(love)}
             <Greaiting
               width="1.5vw"
               margin="0 0.5vw"
