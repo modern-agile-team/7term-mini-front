@@ -52,7 +52,11 @@ export default function Board() {
         }}
       >
         <section className="logoSection">
-          <BeeLogo width="4vw" margin="10px 0px" />
+          <BeeLogo
+            width="4vw"
+            margin="10px 0px"
+            onClick={() => setHoverCategories('all')}
+          />
         </section>
         <section className="infoSection">
           <ButtonBox>{nickName ? nickName : '@@'}님 반갑습니다!</ButtonBox>

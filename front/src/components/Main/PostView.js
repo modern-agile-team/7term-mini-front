@@ -37,11 +37,7 @@ export default function PostView(props) {
       alert('마지막 페이지입니다.');
     }
   }
-  // process.env.REACT_APP_FETCH_POST +
-  // no1 +
-  // process.env.REACT_APP +
-  // (page ? page : 1)
-  //댓글조회
+
   useEffect(
     props => {
       fetch(
