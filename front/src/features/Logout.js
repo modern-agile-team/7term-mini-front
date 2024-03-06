@@ -1,7 +1,7 @@
 import NewAccessToken from './NewAccessToken';
 
 async function performLogout() {
-  return fetch(process.env.REACT_APP_LOGOUT, {
+  return fetch(process.env.REACT_APP_FETCH_LOGOUT, {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',

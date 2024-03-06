@@ -1,5 +1,3 @@
-import {useSearchParams} from 'react-router-dom';
-
 export default function PostCorrection(no, category, content) {
   fetch(process.env.REACT_APP_FETCH_POST + no, {
     method: 'PUT',
