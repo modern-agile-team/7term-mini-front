@@ -266,7 +266,6 @@ label {
 
 .pageMove {
   display: flex;
-  justify-content: center;
 }
 
 /*글 조회 (PostView) 페이지 CSS*/
